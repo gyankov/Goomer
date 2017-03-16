@@ -5,12 +5,24 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace Goomer.Data.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class User : IdentityUser, IAuditInfo, IDeletableEntity
     {
+        private ICollection<Tire> tires;
+        private ICollection<Rim> rims;
+        private ICollection<RimWithTire> rimsWithTires;
+
+        public User()
+        {
+            this.tires = new HashSet<Tire>();
+            this.rims = new HashSet<Rim>();
+            this.rimsWithTires = new HashSet<RimWithTire>();
+
+        }
         public DateTime? CreatedOn { get; set; }
 
         public DateTime? DeletedOn { get; set; }
@@ -20,9 +32,26 @@ namespace Goomer.Data.Models
         public DateTime? ModifiedOn { get; set; }
 
         public string Name { get; set; }
-
-        [RegularExpression(@"\(?\d{3}\)?-? *\d{3}-? *-?\d{4}")]
+        
         public string Phone { get; set; }
+
+        public virtual ICollection<Rim> Rims
+        {
+            get { return this.rims; }
+            set { this.rims = value; }
+        }
+
+        public virtual ICollection<Tire> Tires
+        {
+            get { return this.tires; }
+            set { this.tires = value; }
+        }
+
+        public virtual ICollection<RimWithTire> RimsWithTires
+        {
+            get { return this.rimsWithTires; }
+            set { this.rimsWithTires = value; }
+        }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {

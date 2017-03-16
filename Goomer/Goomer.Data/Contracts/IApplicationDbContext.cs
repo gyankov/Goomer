@@ -11,7 +11,13 @@ namespace Goomer.Data.Contracts
 {
     public interface IApplicationDbContext
     {
-        IDbSet<User> Users { get; set; }
+        IDbSet<Tire> Tires { get; set; }
+
+        IDbSet<Rim> Rims { get; set; }
+
+        IDbSet<RimWithTire> RimsWithTires { get; set; }
+
+        IDbSet<Picture> Pictures { get; set; }
 
         IDbSet<T> Set<T>() where T : class;
 

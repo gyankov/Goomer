@@ -16,6 +16,14 @@ namespace Goomer.Data
         {
         }
 
+        public IDbSet<Rim> Rims { get; set; }
+
+        public IDbSet<Tire> Tires { get; set; }
+
+        public IDbSet<RimWithTire> RimsWithTires { get; set; }
+
+        public IDbSet<Picture> Pictures { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
