@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Goomer.Data.Models
 {
@@ -17,6 +18,11 @@ namespace Goomer.Data.Models
         public bool IsDeleted { get; set; }
 
         public DateTime? ModifiedOn { get; set; }
+
+        public string Name { get; set; }
+
+        [RegularExpression(@"\(?\d{3}\)?-? *\d{3}-? *-?\d{4}")]
+        public string Phone { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
