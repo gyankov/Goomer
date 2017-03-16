@@ -241,6 +241,7 @@
     <Compile Include="Models\Account\ResetPasswordViewModel.cs" />
     <Compile Include="Models\Account\SendCodeViewModel.cs" />
     <Compile Include="Models\Account\VerifyCodeViewModel.cs" />
+    <Compile Include="Models\Home\UserViewModel.cs" />
     <Compile Include="Models\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="Models\Manage\ChangePasswordViewModel.cs" />
     <Compile Include="Models\Manage\ConfigureTwoFactorViewModel.cs" />
@@ -332,6 +333,10 @@
     <ProjectReference Include="..\Goomer.Data\Goomer.Data.csproj">
       <Project>{e6e76db2-1eb4-4c0f-aa87-19fee324192a}</Project>
       <Name>Goomer.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Goomer.Web.Infrastructure\Goomer.Web.Infrastructure.csproj">
+      <Project>{f2d5de65-df59-47f6-84a0-3411532d5340}</Project>
+      <Name>Goomer.Web.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

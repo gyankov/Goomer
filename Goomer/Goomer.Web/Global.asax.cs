@@ -4,6 +4,8 @@ using System.Web.Routing;
 using System.Data.Entity;
 using Goomer.Data;
 using Goomer.Data.Migrations;
+using Goomer.Web.Infrastructure.Mapping;
+using System.Reflection;
 
 namespace Goomer.Web
 {
@@ -17,6 +19,8 @@ namespace Goomer.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             Database.SetInitializer<ApplicationDbContext>(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
             ApplicationDbContext.Create().Database.Initialize(true);
+            var autoMapperConfig = new AutoMapperConfig();
+            autoMapperConfig.Execute(Assembly.GetExecutingAssembly());
         }
     }
 }
