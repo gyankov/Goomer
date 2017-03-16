@@ -4,6 +4,7 @@ using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Data.Entity.Infrastructure;
+using Goomer.Data.Common.Contracts;
 
 namespace Goomer.Data.Common
 {

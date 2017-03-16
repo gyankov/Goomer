@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Goomer.Data.Common
+namespace Goomer.Data.Common.Contracts
 {
     public interface IDbRepository<T>
         where T : class, IAuditInfo, IDeletableEntity

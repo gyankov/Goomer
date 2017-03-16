@@ -219,6 +219,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\DataNinjectModule.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
@@ -320,6 +321,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Goomer.Data.Common\Goomer.Data.Common.csproj">
+      <Project>{633ACC37-41C2-4BCC-9957-16DE865A336F}</Project>
+      <Name>Goomer.Data.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Goomer.Data.Models\Goomer.Data.Models.csproj">
       <Project>{9727359e-2cee-4a30-9e7d-418666662d8b}</Project>
       <Name>Goomer.Data.Models</Name>
