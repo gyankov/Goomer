@@ -12,8 +12,6 @@ namespace Goomer.Data.Models
         [Key]
         public int Id { get; set; }
 
-        public string Url { get; set; }
-
-        public virtual Item Item { get; set; }
+        public string Url { get; set; }        
     }
 }

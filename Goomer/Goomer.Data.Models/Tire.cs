@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Goomer.Data.Models
 {
-    public class Tire : Item, ITire
+    public class Tire : BaseModel, ITire
     {
         public string SpeedIndex { get; set; }
 

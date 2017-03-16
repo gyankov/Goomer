@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Goomer.Data.Models
 {
-    public abstract class Item : IAuditInfo, IDeletableEntity
+    public abstract class BaseModel : IAuditInfo, IDeletableEntity
     {
         private ICollection<Picture> pictures;
 
-        public Item()
+        public BaseModel()
         {
             this.pictures = new HashSet<Picture>();
         }

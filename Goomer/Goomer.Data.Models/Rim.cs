@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Goomer.Data.Models
 {
-    public class Rim : Item, IRim
+    public class Rim : BaseModel, IRim
     {        
         public double SpaceBetweenBolts { get; set; }
 
