@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goomer.Web.Routes.Tests", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goomer.Web.Controllers.Tests", "Goomer.Web.Controllers.Tests\Goomer.Web.Controllers.Tests.csproj", "{F476A269-D2DE-4247-B0D5-8509039915F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goomer.Services.Coverall", "Goomer.Services.Coverall\Goomer.Services.Coverall.csproj", "{29585E90-EB8F-482F-BAA2-881422D49384}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{F476A269-D2DE-4247-B0D5-8509039915F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F476A269-D2DE-4247-B0D5-8509039915F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F476A269-D2DE-4247-B0D5-8509039915F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29585E90-EB8F-482F-BAA2-881422D49384}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29585E90-EB8F-482F-BAA2-881422D49384}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29585E90-EB8F-482F-BAA2-881422D49384}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29585E90-EB8F-482F-BAA2-881422D49384}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,5 +101,6 @@ Global
 		{649C8A66-797E-4461-A135-7E7EE7E5CB12} = {AC975385-DD5E-477C-BE7D-6F8D7AF2C89E}
 		{78ADCFD2-A61B-4D00-BEDA-64FCA462C9C4} = {AC975385-DD5E-477C-BE7D-6F8D7AF2C89E}
 		{F476A269-D2DE-4247-B0D5-8509039915F4} = {AC975385-DD5E-477C-BE7D-6F8D7AF2C89E}
+		{29585E90-EB8F-482F-BAA2-881422D49384} = {20C2A124-5694-423C-B1E4-781AA1B694CD}
 	EndGlobalSection
 EndGlobal
