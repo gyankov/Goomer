@@ -8,7 +8,7 @@ using System.Web;
 
 namespace Goomer.Web.Models.Home
 {
-    public class UserViewModel : IMapFrom<User>
+    public class UserViewModel : IMapFrom<User>, IMapTo<User>
     {
         public string Name { get; set; }
     }
