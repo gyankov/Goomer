@@ -20,6 +20,8 @@ namespace Goomer.Web.Controllers
         }
         public ActionResult Index()
         {
+           //var viewModel = AutoMapperConfig.Configuration.CreateMapper().Map<UserViewModel>(User);
+
             var users = this.usersRepository.All().To<UserViewModel>().ToList();
             return View();
         }
