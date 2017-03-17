@@ -17,6 +17,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goomer.Data", "Goomer.Data\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goomer.Web.Infrastructure", "Goomer.Web.Infrastructure\Goomer.Web.Infrastructure.csproj", "{F2D5DE65-DF59-47F6-84A0-3411532D5340}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{20C2A124-5694-423C-B1E4-781AA1B694CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goomer.Services.Data", "Goomer.Services.Data\Goomer.Services.Data.csproj", "{BC1B9126-C25C-455D-B72C-B122B838F43A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goomer.Services.Web", "Goomer.Services.Web\Goomer.Services.Web.csproj", "{5B666015-A646-4C12-911C-42D88113D131}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +53,14 @@ Global
 		{F2D5DE65-DF59-47F6-84A0-3411532D5340}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2D5DE65-DF59-47F6-84A0-3411532D5340}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2D5DE65-DF59-47F6-84A0-3411532D5340}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC1B9126-C25C-455D-B72C-B122B838F43A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC1B9126-C25C-455D-B72C-B122B838F43A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC1B9126-C25C-455D-B72C-B122B838F43A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC1B9126-C25C-455D-B72C-B122B838F43A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B666015-A646-4C12-911C-42D88113D131}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B666015-A646-4C12-911C-42D88113D131}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B666015-A646-4C12-911C-42D88113D131}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B666015-A646-4C12-911C-42D88113D131}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,5 +69,7 @@ Global
 		{9727359E-2CEE-4A30-9E7D-418666662D8B} = {B98C9C45-3037-48B4-8E0A-3F690FE73D2E}
 		{633ACC37-41C2-4BCC-9957-16DE865A336F} = {B98C9C45-3037-48B4-8E0A-3F690FE73D2E}
 		{E6E76DB2-1EB4-4C0F-AA87-19FEE324192A} = {B98C9C45-3037-48B4-8E0A-3F690FE73D2E}
+		{BC1B9126-C25C-455D-B72C-B122B838F43A} = {20C2A124-5694-423C-B1E4-781AA1B694CD}
+		{5B666015-A646-4C12-911C-42D88113D131} = {20C2A124-5694-423C-B1E4-781AA1B694CD}
 	EndGlobalSection
 EndGlobal
