@@ -2,3 +2,9 @@
 .fa.icon-30px {
     font-size: 30px;
 }
+
+.halfscreen {
+  height: 50vh;
+  widows: 90vw;
+  margin: auto;
+}

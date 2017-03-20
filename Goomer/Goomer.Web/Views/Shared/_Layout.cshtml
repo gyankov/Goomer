@@ -1,48 +1,4 @@
-﻿@*<!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>@ViewBag.Title - My ASP.NET Application</title>
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
-
-    </head>
-    <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    </ul>
-                    @Html.Partial("_LoginPartial")
-                </div>
-            </div>
-        </div>
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-            </footer>
-        </div>
-
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
-    </body>
-    </html>*@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -100,19 +56,22 @@
             </div>
         </nav>
     </div>
-    <div class="main-container">
+    <div class="main-container" style="width:90vw;margin:auto">
+
+
         @RenderBody()
+
         <footer class="footer-1 bg-dark">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-sm-6">
-                        <img alt="Logo" class="logo" src="~/Content/Site/logo.png"" />
-                    </div>                   
+                        <img alt="Logo" class="logo" src="~/Content/Site/logo.png" " />
+                    </div>
                 </div>
                 <!--end of row-->
                 <div class="row">
                     <div class="col-sm-6">
-                        <span class="sub">&copy; Copyright 2016 - Joronator did all this shit.</span>
+                        <span class="sub">&copy; Copyright @DateTime.Now.Year - The Joronator did all this shit.</span>
                     </div>
                     <div class="col-sm-6 text-right">
                         <ul class="list-inline social-list">
@@ -143,20 +102,20 @@
             <!--end of container-->
             <a class="btn btn-sm fade-half back-to-top inner-link" href="#top">Top</a>
         </footer>
-    </div>    
+    </div>
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/flickr.js"></script>
-    <script src="~/Scripts/flexslider.min.js"></script>
-    <script src="~/Scripts/lightbox.min.js"></script>
-    <script src="~/Scripts/masonry.min.js"></script>
-    <script src="~/Scripts/twitterfetcher.min.js"></script>
-    <script src="~/Scripts/spectragram.min.js"></script>
-    <script src="~/Scripts/ytplayer.min.js"></script>
-    <script src="~/Scripts/countdown.min.js"></script>
-    <script src="~/Scripts/smooth-scroll.min.js"></script>
-    <script src="~/Scripts/parallax.js"></script>
-    <script src="~/Scripts/scripts.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/flickr.js"></script>
+    <script src="/Scripts/flexslider.min.js"></script>
+    <script src="/Scripts/lightbox.min.js"></script>
+    <script src="/Scripts/masonry.min.js"></script>
+    <script src="/Scripts/twitterfetcher.min.js"></script>
+    <script src="/Scripts/spectragram.min.js"></script>
+    <script src="/Scripts/ytplayer.min.js"></script>
+    <script src="/Scripts/countdown.min.js"></script>
+    <script src="/Scripts/smooth-scroll.min.js"></script>
+    <script src="/Scripts/parallax.js"></script>
+    <script src="/Scripts/scripts.js"></script>
 </body>
 </html>

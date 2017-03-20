@@ -22,7 +22,7 @@ namespace Goomer.Web.Controllers
         {
            //var viewModel = AutoMapperConfig.Configuration.CreateMapper().Map<UserViewModel>(User);
 
-            var users = this.usersRepository.All().To<UserViewModel>().ToList();
+            var users = this.usersRepository.All().To<UserViewModel>().ToList();            
             return View();
         }
     }
