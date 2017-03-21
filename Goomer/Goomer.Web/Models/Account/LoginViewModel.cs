@@ -4,12 +4,12 @@ namespace Goomer.Web.Models.Account
 {
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Моля въведете е-майл.")]
         [Display(Name = "Е-майл")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Е-мейлът не е валиден.")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Моля въведете парола.")]
         [DataType(DataType.Password)]
         [Display(Name = "Парола")]
         public string Password { get; set; }

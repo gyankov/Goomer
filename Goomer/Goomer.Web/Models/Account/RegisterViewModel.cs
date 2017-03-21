@@ -5,7 +5,7 @@ namespace Goomer.Web.Models.Account
     public class RegisterViewModel
     {
         [Required(ErrorMessage = "Моля въведете е-майл.")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Е-мейлът не е валиден.")]
         [Display(Name = "Е-майл")]
         public string Email { get; set; }
 
