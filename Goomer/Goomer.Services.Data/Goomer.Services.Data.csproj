@@ -57,8 +57,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IRimsService.cs" />
+    <Compile Include="Contracts\IRimsWithTiresService.cs" />
+    <Compile Include="Contracts\ITiresService.cs" />
     <Compile Include="Contracts\IUsersService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RimsService.cs" />
+    <Compile Include="RimsWithTyresService.cs" />
+    <Compile Include="TiresService.cs" />
     <Compile Include="UsersService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +75,10 @@
     <ProjectReference Include="..\Goomer.Data.Models\Goomer.Data.Models.csproj">
       <Project>{9727359E-2CEE-4A30-9E7D-418666662D8B}</Project>
       <Name>Goomer.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Goomer.Services.Web\Goomer.Services.Web.csproj">
+      <Project>{5B666015-A646-4C12-911C-42D88113D131}</Project>
+      <Name>Goomer.Services.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

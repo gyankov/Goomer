@@ -343,6 +343,10 @@
       <Project>{e6e76db2-1eb4-4c0f-aa87-19fee324192a}</Project>
       <Name>Goomer.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Goomer.Services.Data\Goomer.Services.Data.csproj">
+      <Project>{BC1B9126-C25C-455D-B72C-B122B838F43A}</Project>
+      <Name>Goomer.Services.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Goomer.Services.Web\Goomer.Services.Web.csproj">
       <Project>{5B666015-A646-4C12-911C-42D88113D131}</Project>
       <Name>Goomer.Services.Web</Name>

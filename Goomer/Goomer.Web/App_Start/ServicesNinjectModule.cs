@@ -1,4 +1,6 @@
-﻿using Goomer.Services.Web;
+﻿using Goomer.Services.Data;
+using Goomer.Services.Data.Contracts;
+using Goomer.Services.Web;
 using Goomer.Services.Web.Contracts;
 using Ninject.Modules;
 using Ninject.Web.Common;
@@ -14,6 +16,9 @@ namespace Goomer.Web.App_Start
         public override void Load()
         {
             this.Bind<ICacheService>().To<HttpCacheService>();
+            this.Bind<ITiresService>().To<TiresService>();
+            this.Bind<IRimsService>().To<RimsService>();
+            this.Bind<IRimsWithTiresService>().To<RimsWithTyresService>();
         }
     }
 }
