@@ -228,6 +228,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\ServicesNinjectModule.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -341,6 +342,10 @@
     <ProjectReference Include="..\Goomer.Data\Goomer.Data.csproj">
       <Project>{e6e76db2-1eb4-4c0f-aa87-19fee324192a}</Project>
       <Name>Goomer.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Goomer.Services.Web\Goomer.Services.Web.csproj">
+      <Project>{5B666015-A646-4C12-911C-42D88113D131}</Project>
+      <Name>Goomer.Services.Web</Name>
     </ProjectReference>
     <ProjectReference Include="..\Goomer.Web.Infrastructure\Goomer.Web.Infrastructure.csproj">
       <Project>{f2d5de65-df59-47f6-84a0-3411532d5340}</Project>

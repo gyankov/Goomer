@@ -1,14 +1,14 @@
-﻿@using Goomer.Web.Models.Home
-@model HomeViewModel
+﻿@model HomeViewModel
+@using Goomer.Web.Models.Home
 @{
     ViewBag.Title = "Home Page";
 }
 
 <section class="cover image-slider slider-all-controls controls-inside parallax" style="height:50vh;">
-    <ul class="slides" >
+    <ul class="slides">
         <li class="overlay image-bg">
             <div class="background-image-holder">
-                <img alt="image" class="background-image" src="~/Content/Site/close-up-tire.jpg" />                                              
+                <img alt="image" class="background-image" src="~/Content/Site/close-up-tire.jpg" />
             </div>
             <div class="container v-align-transform">
                 <div class="row">
@@ -16,7 +16,7 @@
                         <h1 class="mb40 mb-xs-16 large">&nbsp;</h1>
                         <h1 class="mb40 mb-xs-16 large">&nbsp;</h1>
                         <h1 class="mb40 mb-xs-16 large">&nbsp;</h1>
-    
+
                         <h6 class="uppercase mb16">Безплатни обяви за гуми</h6>
                         <p class="lead mb40">
                             В Goomer можеш да търсиш из обяви за гуми с подробна търсачка,
@@ -70,6 +70,106 @@
                 </div>
                 <!--end of row-->
             </div>
-        </li>       
+        </li>
     </ul>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4">
+                <p class="lead text-success">
+                    Последни обяви в гуми:
+                </p>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <hr>
+            </div>
+        </div>
+        <div class="row masonry">
+           @foreach (var tire in Model.Tires)
+           {
+            <div class="col-md-3 col-sm-4 masonry-item col-xs-12">
+                <div class="image-tile outer-title text-center">
+                    <a href="#">
+                        <img alt="Pic" class="product-thumb" src="@tire.MainPicture.Url" />
+                    </a>
+                    <div class="title">
+                        <h5 class="mb0">
+                           @tire.Brand
+                            <br /> @tire.Model
+                        </h5>
+                        <span class="display-block mb16">@tire.Price лв.</span>
+                    </div>
+                </div>
+            </div>
+           }
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-4">
+                <p class="lead text-success">
+                    Последни обяви в гуми:
+                </p>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <hr>
+            </div>
+        </div>
+        <div class="row masonry">
+            @foreach (var rim in Model.Rims)
+            {
+                <div class="col-md-3 col-sm-4 masonry-item col-xs-12">
+                    <div class="image-tile outer-title text-center">
+                        <a href="#">
+                            <img alt="Pic" class="product-thumb" src="@rim.MainPicture.Url" />
+                        </a>
+                        <div class="title">
+                            <h5 class="mb0">
+                                @rim.Brand
+                                <br /> @rim.Model
+                            </h5>
+                            <span class="display-block mb16">@rim.Price лв.</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-4">
+                <p class="lead text-success">
+                    Последни обяви в гуми с джанти:
+                </p>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <hr>
+            </div>
+        </div>
+        <div class="row masonry">
+            @foreach (var rimWithTire in Model.RimsWithTires)
+            {
+                <div class="col-md-3 col-sm-4 masonry-item col-xs-12">
+                    <div class="image-tile outer-title text-center">
+                        <a href="#">
+                            <img alt="Pic" class="product-thumb" src="@rimWithTire.MainPicture.Url" />
+                        </a>
+                        <div class="title">
+                            <h5 class="mb0">
+                                @rimWithTire.Brand
+                                <br /> @rimWithTire.Model
+                            </h5>
+                            <span class="display-block mb16">@rimWithTire.Price лв.</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 </section>

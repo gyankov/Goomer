@@ -7,9 +7,9 @@ namespace Goomer.Web.Models.Home
 {
     public class HomeViewModel
     {
-        IEnumerable<TireViewModel> Tires { get; set; }
-        IEnumerable<RimViewModel> Rims { get; set; }
-        IEnumerable<RimWithTireViewModel> RimsWithTires { get; set; }
+        public IEnumerable<TireViewModel> Tires { get; set; }
+        public IEnumerable<RimViewModel> Rims { get; set; }
+        public IEnumerable<RimWithTireViewModel> RimsWithTires { get; set; }
 
     }
 }
