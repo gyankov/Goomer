@@ -7,11 +7,13 @@
     }
 
     <li class="has-dropdown">
-        @Html.ActionLink(this.User.Identity.Name, "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+       <a href="#">@this.User.Identity.Name</a>
         <ul >
             <li><a href="#">Нова обява гуми</a></li>
             <li><a href="#">Нова обява джанти</a></li>
-            <li><a href="#">Нова обява джанти с гуми</a></li>
+            <li><a href="#">Нова обява гуми с джанти</a></li>
+            <li><a href="/Manage/ChangePassword">Смяна на парола</a></li>
+
             <li><a href="javascript:document.getElementById('logoutForm').submit()">Излез</a></li>
 
         </ul>

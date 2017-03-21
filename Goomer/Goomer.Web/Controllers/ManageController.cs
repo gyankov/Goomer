@@ -238,7 +238,7 @@ namespace Goomer.Web.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+                return Redirect("/");
             }
             AddErrors(result);
             return View(model);
