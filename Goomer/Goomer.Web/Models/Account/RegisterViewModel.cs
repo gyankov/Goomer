@@ -4,20 +4,20 @@ namespace Goomer.Web.Models.Account
 {
     public class RegisterViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Моля въведете е-майл.")]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "Е-майл")]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "Моля въведете парола.")]
+        [StringLength(100, ErrorMessage = "Паролата трябва да бъде между 6 и 100 символа.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Парола")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Повтори парола")]
+        [Compare("Password", ErrorMessage = "Двете пароли не съвпадат.")]
         public string ConfirmPassword { get; set; }
     }
 }

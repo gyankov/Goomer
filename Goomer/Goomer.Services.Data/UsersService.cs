@@ -19,5 +19,10 @@ namespace Goomer.Services.Data
         {
             return this.usersRepo.All();
         }
+
+        public User GetById(object id)
+        {
+            return this.usersRepo.GetById(id);
+        }
     }
 }

@@ -74,6 +74,7 @@
     </ul>
 </section>
 <section>
+    
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-sm-4">
@@ -89,23 +90,23 @@
             </div>
         </div>
         <div class="row masonry">
-           @foreach (var tire in Model.Tires)
-           {
-            <div class="col-md-3 col-sm-4 masonry-item col-xs-12">
-                <div class="image-tile outer-title text-center">
-                    <a href="#">
-                        <img alt="Pic" class="product-thumb" src="@tire.MainPicture.Url" />
-                    </a>
-                    <div class="title">
-                        <h5 class="mb0">
-                           @tire.Brand
-                            <br /> @tire.Model
-                        </h5>
-                        <span class="display-block mb16">@tire.Price лв.</span>
+            @foreach (var tire in Model.Tires)
+            {
+                <div class="col-md-3 col-sm-4 masonry-item col-xs-12">
+                    <div class="image-tile outer-title text-center">
+                        <a href="#">
+                            <img alt="Pic" class="product-thumb" src="@tire.MainPicture.Url" />
+                        </a>
+                        <div class="title">
+                            <h5 class="mb0">
+                                @tire.Brand
+                                <br /> @tire.Model
+                            </h5>
+                            <span class="display-block mb16">@tire.Price лв.</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-           }
+            }
         </div>
         <div class="row">
             <div class="col-md-3 col-sm-4">

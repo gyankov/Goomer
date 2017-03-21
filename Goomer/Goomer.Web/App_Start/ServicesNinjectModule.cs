@@ -15,6 +15,7 @@ namespace Goomer.Web.App_Start
     {
         public override void Load()
         {
+            this.Bind<IUsersService>().To<UsersService>();
             this.Bind<ICacheService>().To<HttpCacheService>();
             this.Bind<ITiresService>().To<TiresService>();
             this.Bind<IRimsService>().To<RimsService>();

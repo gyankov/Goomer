@@ -10,5 +10,7 @@ namespace Goomer.Services.Data.Contracts
     public interface IUsersService
     {
         IQueryable<User> AllUsers();
+
+        User GetById(object id);
     }
 }

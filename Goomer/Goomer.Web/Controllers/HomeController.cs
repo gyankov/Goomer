@@ -15,18 +15,20 @@ namespace Goomer.Web.Controllers
 {
     public class HomeController : Controller
     {
-
+       private readonly IUsersService usersService;
         private readonly ITiresService tiresService;
         private readonly IRimsService rimsService;
         private readonly IRimsWithTiresService rimsWithTyresService;
         private readonly ICacheService cacheService;
 
         public HomeController(
+            IUsersService usersService,
             ITiresService tiresService,
             IRimsService rimsService,
             IRimsWithTiresService rimsWithTyresService,
-            ICacheService cacheService)
+            ICacheService cacheService) 
         {
+            this.usersService = usersService;
             this.tiresService = tiresService;
             this.rimsService = rimsService;
             this.rimsWithTyresService = rimsWithTyresService;

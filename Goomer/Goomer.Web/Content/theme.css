@@ -957,7 +957,7 @@ nav.bg-dark .logo-dark {
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 1px;
-  color: #292929;
+  color: #ffbb33;
   opacity: 0.5;
   transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
@@ -969,7 +969,7 @@ nav.bg-dark .logo-dark {
   opacity: 1 !important;
 }
 .menu > li {
-  margin-right: 32px;
+  margin-right: 32px;  
   float: left;
   position: relative;
   transition: all 0.3s ease;
@@ -990,7 +990,7 @@ nav.bg-dark .logo-dark {
 .menu > li ul {
   width: 200px;
   padding: 8px 0;
-  background: #292929;
+  background: #ffbb33;
   position: absolute;
   z-index: 99;
   opacity: 0;
@@ -1377,7 +1377,7 @@ nav .cart-overview a {
   }
   .menu > li > ul li a,
   .mega-menu .title {
-    padding: 4px 16px;
+    padding: 14px 16px;
   }
   .has-dropdown .has-dropdown li {
     padding-left: 18px;
