@@ -47,14 +47,7 @@ namespace Goomer.Data.Models
 
         public string Description { get; set; }
 
-        public virtual User Owner { get; set; }
-
-        public virtual Picture MainPicture { get; set; }
-
-        public virtual ICollection<Picture> Pictures
-        {
-            get { return this.pictures; }
-            set { this.pictures = value; }
-        }
+        public virtual User Owner { get; set; }     
+              
     }
 }

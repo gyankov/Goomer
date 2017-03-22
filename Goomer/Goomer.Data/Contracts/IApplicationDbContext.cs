@@ -17,12 +17,17 @@ namespace Goomer.Data.Contracts
 
         IDbSet<RimWithTire> RimsWithTires { get; set; }
 
-        IDbSet<Picture> Pictures { get; set; }
+        IDbSet<RimPicture> RimPictures { get; set; }
+
+        IDbSet<TirePicture> TirePictures { get; set; }
+
+        IDbSet<RimWithTirePicture> RimWithTirePictures { get; set; }
 
         IDbSet<T> Set<T>() where T : class;
 
         DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
 
         int SaveChanges();
+        
     }
 }

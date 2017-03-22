@@ -1,14 +1,15 @@
 ﻿using Goomer.Data.Models.BaseModels;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Goomer.Data.Models
 {
     public class RimWithTire : BaseModel, IRim, ITire
     {
+        private ICollection<RimWithTirePicture> pictures;
+        public RimWithTire()
+        {
+            this.pictures = new HashSet<RimWithTirePicture>();
+        }
         public string SpeedIndex { get; set; }
 
         public string WeightIndex { get; set; }
@@ -26,5 +27,11 @@ namespace Goomer.Data.Models
         public int NumberOfBolts { get; set; }
 
         public double CentralHoleSize { get; set; }
+        
+        public virtual ICollection<RimWithTirePicture> Pictures
+        {
+            get { return this.pictures; }
+            set { this.pictures = value; }
+        }
     }
 }

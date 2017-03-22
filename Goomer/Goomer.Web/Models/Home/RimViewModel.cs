@@ -11,7 +11,7 @@ namespace Goomer.Web.Models.Home
     {
         public int Id { get; set; }
 
-        public virtual Picture MainPicture { get; set; }
+        public ICollection<RimPicture> Pictures { get; set; }
 
         public string Brand { get; set; }
 

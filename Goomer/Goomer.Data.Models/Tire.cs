@@ -9,6 +9,11 @@ namespace Goomer.Data.Models
 {
     public class Tire : BaseModel, ITire
     {
+        private ICollection<TirePicture> pictures;
+        public Tire()
+        {
+            this.pictures = new HashSet<TirePicture>();
+        }
         public string SpeedIndex { get; set; }
 
         public string WeightIndex { get; set; }
@@ -20,5 +25,11 @@ namespace Goomer.Data.Models
         public double GrappleMm { get; set; }
 
         public string Season { get; set; }
+        
+        public virtual ICollection<TirePicture> Pictures
+        {
+            get { return this.pictures; }
+            set { this.pictures = value; }
+        }
     }
 }

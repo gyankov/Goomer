@@ -2,6 +2,7 @@
 using Goomer.Services.Data.Contracts;
 using Goomer.Services.Web;
 using Goomer.Services.Web.Contracts;
+using Goomer.Web.Infrastructure.FileSystem;
 using Ninject.Modules;
 using Ninject.Web.Common;
 using System;
@@ -20,6 +21,8 @@ namespace Goomer.Web.App_Start
             this.Bind<ITiresService>().To<TiresService>();
             this.Bind<IRimsService>().To<RimsService>();
             this.Bind<IRimsWithTiresService>().To<RimsWithTyresService>();
+            this.Bind<IFileSaver>().To<FileSaver>();
+
         }
     }
 }

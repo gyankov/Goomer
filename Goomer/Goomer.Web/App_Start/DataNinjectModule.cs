@@ -3,6 +3,7 @@ using Goomer.Data.Common;
 using Goomer.Data.Common.Contracts;
 using Goomer.Data.Contracts;
 using Ninject.Modules;
+using Ninject.Web.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace Goomer.Web.App_Start
     {
         public override void Load()
         {
-            this.Bind<IApplicationDbContext>().To<ApplicationDbContext>();
+            this.Bind<IApplicationDbContext>().To<ApplicationDbContext>().InRequestScope();
             this.Bind(typeof(IDbRepository<>)).To(typeof(EfRepository<>));
             this.Bind<IUnitOfWork>().To<UnitOfWork>();
         }
