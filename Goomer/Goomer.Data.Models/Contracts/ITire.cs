@@ -14,7 +14,7 @@ namespace Goomer.Data.Models.BaseModels
 
         double Height { get; set; }
 
-        DateTime? Dot { get; set; }
+        int Dot { get; set; }
 
         double GrappleMm { get; set; }
 

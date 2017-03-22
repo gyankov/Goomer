@@ -15,7 +15,7 @@ namespace Goomer.Data.Models
 
         public double Height { get; set; }
 
-        public DateTime? Dot { get; set; }
+        public int Dot { get; set; }
 
         public double GrappleMm { get; set; }
 
