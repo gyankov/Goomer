@@ -69,6 +69,7 @@
     <Compile Include="RimPicture.cs" />
     <Compile Include="RimWithTire.cs" />
     <Compile Include="RimWithTirePicture.cs" />
+    <Compile Include="SearchModels\TiresSearchModel.cs" />
     <Compile Include="Tire.cs" />
     <Compile Include="TirePicture.cs" />
     <Compile Include="User.cs" />

@@ -8,7 +8,7 @@ namespace Goomer.Data.Models.BaseModels
 {
     public interface ITire
     {
-        string SpeedIndex { get; set; }
+        int SpeedIndex { get; set; }
 
         string WeightIndex { get; set; }
 

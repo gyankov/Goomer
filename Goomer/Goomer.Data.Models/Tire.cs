@@ -14,7 +14,7 @@ namespace Goomer.Data.Models
         {
             this.pictures = new HashSet<TirePicture>();
         }
-        public string SpeedIndex { get; set; }
+        public int SpeedIndex { get; set; }
 
         public string WeightIndex { get; set; }
 

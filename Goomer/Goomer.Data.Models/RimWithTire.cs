@@ -10,7 +10,7 @@ namespace Goomer.Data.Models
         {
             this.pictures = new HashSet<RimWithTirePicture>();
         }
-        public string SpeedIndex { get; set; }
+        public int SpeedIndex { get; set; }
 
         public string WeightIndex { get; set; }
 
@@ -27,7 +27,7 @@ namespace Goomer.Data.Models
         public int NumberOfBolts { get; set; }
 
         public double CentralHoleSize { get; set; }
-        
+
         public virtual ICollection<RimWithTirePicture> Pictures
         {
             get { return this.pictures; }

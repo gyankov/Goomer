@@ -104,10 +104,10 @@
                         </a>
                         <div class="title">
                             <h5 class="mb0">
-                                @tire.Brand
-                                <br /> @tire.Model
+                                @HttpUtility.HtmlEncode(tire.Brand)
+                                <br /> @HttpUtility.HtmlEncode(tire.Model)
                             </h5>
-                            <span class="display-block mb16">@tire.Price лв.</span>
+                            <span class="display-block mb16">@HttpUtility.HtmlEncode(tire.Price) лв.</span>
                         </div>
                     </div>
                 </div>
@@ -136,10 +136,10 @@
                         </a>
                         <div class="title">
                             <h5 class="mb0">
-                                @rim.Brand
-                                <br /> @rim.Model
+                                @HttpUtility.HtmlEncode(rim.Brand)
+                                <br /> @HttpUtility.HtmlEncode(rim.Model)
                             </h5>
-                            <span class="display-block mb16">@rim.Price лв.</span>
+                            <span class="display-block mb16">@HttpUtility.HtmlEncode(rim.Price) лв.</span>
                         </div>
                     </div>
                 </div>
@@ -168,10 +168,10 @@
                         </a>
                         <div class="title">
                             <h5 class="mb0">
-                                @rimWithTire.Brand
-                                <br /> @rimWithTire.Model
+                                @HttpUtility.HtmlEncode(rimWithTire.Brand)
+                                <br /> @HttpUtility.HtmlEncode(rimWithTire.Model)
                             </h5>
-                            <span class="display-block mb16">@rimWithTire.Price лв.</span>
+                            <span class="display-block mb16">@HttpUtility.HtmlEncode(rimWithTire.Price) лв.</span>
                         </div>
                     </div>
                 </div>

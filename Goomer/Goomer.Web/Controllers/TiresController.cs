@@ -1,4 +1,5 @@
 ﻿using Goomer.Data.Models;
+using Goomer.Data.Models.SearchModels;
 using Goomer.Services.Data.Contracts;
 using Goomer.Web.Infrastructure.FileSystem;
 using Goomer.Web.Infrastructure.Mapping;
@@ -55,6 +56,20 @@ namespace Goomer.Web.Controllers
             }
             this.tiresService.AddNewTireAd(userId, actualTire, picturesPaths);
             return Redirect("/");
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult Search()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult Search(TiresSearchModel tire)
+        {
+            return View();
         }
 
         // GET: Tires
