@@ -23,11 +23,11 @@ namespace Goomer.Data.Models.SearchModels
 
         public bool OnlyBrandNew { get; set; }
 
-        public int SpeedIndexFrom { get; set; }
+        public int? SpeedIndexFrom { get; set; }
 
         public string WeightIndex { get; set; }
 
-        public double GrappleFrom { get; set; }
+        public double? GrappleFrom { get; set; }
 
         public string Season { get; set; }
         

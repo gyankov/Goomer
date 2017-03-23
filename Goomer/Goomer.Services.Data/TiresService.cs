@@ -23,6 +23,11 @@ namespace Goomer.Services.Data
             this.uow = uow;
         }
 
+        public Tire GetById(object id)
+        {
+            return this.tiresRepo.GetById(id);
+        }
+
         public IQueryable<Tire> LatestPosts()
         {
             return this.tiresRepo.All().OrderBy(x => x.CreatedOn).Take(4);
@@ -103,16 +108,31 @@ namespace Goomer.Services.Data
                 tires = tires.Where(x => x.Price <= searchModel.PriceTo);
             }
 
+            if (searchModel.SpeedIndexFrom != null)
+            {
+                tires = tires.Where(x => x.SpeedIndex >= searchModel.SpeedIndexFrom);
+            }
+
+            if (searchModel.WeightIndex != null)
+            {
+                tires = tires.Where(x => x.WeightIndex == searchModel.WeightIndex);
+            }
+
+            if (searchModel.GrappleFrom != null)
+            {
+                tires = tires.Where(x => x.GrappleMm >= searchModel.GrappleFrom);
+            }
+
+            if (searchModel.Season != null)
+            {
+                tires = tires.Where(x => x.Season == searchModel.Season);
+            }
+
             if (searchModel.OnlyBrandNew)
             {
                 tires = tires.Where(x => x.IsBrandNew);
             }
 
-            tires = tires.Where(x => 
-            x.SpeedIndex >= searchModel.SpeedIndexFrom &&  
-            x.WeightIndex == searchModel.WeightIndex &&
-            x.GrappleMm >= searchModel.GrappleFrom &&
-            x.Season == searchModel.Season);
             return tires;
         }
     }

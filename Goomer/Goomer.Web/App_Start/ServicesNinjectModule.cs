@@ -22,6 +22,7 @@ namespace Goomer.Web.App_Start
             this.Bind<IRimsService>().To<RimsService>();
             this.Bind<IRimsWithTiresService>().To<RimsWithTyresService>();
             this.Bind<IFileSaver>().To<FileSaver>();
+            this.Bind<IIdentifierProvider>().To<IdentifierProvider>();
 
         }
     }

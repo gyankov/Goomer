@@ -15,24 +15,26 @@ namespace Goomer.Web.Controllers
 {
     public class HomeController : Controller
     {
-       private readonly IUsersService usersService;
+        private readonly IUsersService usersService;
         private readonly ITiresService tiresService;
         private readonly IRimsService rimsService;
         private readonly IRimsWithTiresService rimsWithTyresService;
         private readonly ICacheService cacheService;
-
+        private readonly IIdentifierProvider identifierProvider;
         public HomeController(
             IUsersService usersService,
             ITiresService tiresService,
             IRimsService rimsService,
             IRimsWithTiresService rimsWithTyresService,
-            ICacheService cacheService) 
+            ICacheService cacheService,
+            IIdentifierProvider identifierProvider)
         {
             this.usersService = usersService;
             this.tiresService = tiresService;
             this.rimsService = rimsService;
             this.rimsWithTyresService = rimsWithTyresService;
             this.cacheService = cacheService;
+            this.identifierProvider = identifierProvider;
         }
         public ActionResult Index()
         {
@@ -40,8 +42,8 @@ namespace Goomer.Web.Controllers
             // var users = this.usersRepository.All().To<UserViewModel>().ToList(); 
 
             var tires = this.cacheService.Get(
-                "homeTires", 
-                () => this.tiresService.LatestPosts().To<TireViewModel>().ToList(), 
+                "homeTires",
+                () => this.tiresService.LatestPosts().To<TireViewModel>().ToList(),
                 10 * 60);
 
             var rims = this.cacheService.Get(

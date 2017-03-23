@@ -1,6 +1,7 @@
 ﻿using Goomer.Data.Models;
 using Goomer.Data.Models.SearchModels;
 using Goomer.Services.Data.Contracts;
+using Goomer.Services.Web.Contracts;
 using Goomer.Web.Infrastructure.FileSystem;
 using Goomer.Web.Infrastructure.Mapping;
 using Goomer.Web.Models.Tires;
@@ -19,12 +20,14 @@ namespace Goomer.Web.Controllers
         private readonly IUsersService usersService;
         private readonly ITiresService tiresService;
         private readonly IFileSaver fileSaver;
+        private readonly IIdentifierProvider identifierProvider;
 
-        public TiresController(IUsersService usersService, ITiresService tiresService, IFileSaver fileSaver)
+        public TiresController(IUsersService usersService, ITiresService tiresService, IFileSaver fileSaver, IIdentifierProvider identifierProvider)
         {
             this.usersService = usersService;
             this.tiresService = tiresService;
             this.fileSaver = fileSaver;
+            this.identifierProvider = identifierProvider;
         }
 
         [HttpGet]
@@ -41,12 +44,11 @@ namespace Goomer.Web.Controllers
                 return View(tire);
             }
             var userId = this.User.Identity.GetUserId();
-            var actualTire = AutoMapperConfig.Configuration.CreateMapper().Map<Tire>(tire);
             var picturesPaths = new List<string>();
             var counter = 0;
             foreach (var file in files)
             {
-                if (counter++ > 6)
+                if (counter++ > 3)
                 {
                     break;
                 }
@@ -54,7 +56,7 @@ namespace Goomer.Web.Controllers
                 picturesPaths.Add("/Content/Gallery/" + path);
                 fileSaver.SaveFile("/Content/Gallery/" + path, file.InputStream);
             }
-            this.tiresService.AddNewTireAd(userId, actualTire, picturesPaths);
+            this.tiresService.AddNewTireAd(userId, AutoMapperConfig.Configuration.CreateMapper().Map<Tire>(tire), picturesPaths);
             return Redirect("/");
         }
 
@@ -69,13 +71,32 @@ namespace Goomer.Web.Controllers
         [HttpPost]
         public ActionResult Search(TiresSearchModel tire)
         {
-            return View();
+            return RedirectToAction("Searching", tire);
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult Searching(TiresSearchModel tire)
+        {
+            var tires = this.tiresService.Filter(tire).To<ListingTireViewModel>().ToList();
+            return View("ListingTire", tires);
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult TireAd(string id)
+        {
+            var actualId = this.identifierProvider.DecodeId(id);
+            var tire = this.tiresService.GetById(actualId);
+
+            return View(AutoMapperConfig.Configuration.CreateMapper().Map<TireAdViewModel>(tire));
         }
 
         // GET: Tires
         public ActionResult Index()
         {
-            return View();
+            var tires = this.tiresService.LatestPosts().To<ListingTireViewModel>().ToList();
+            return View("ListingTire", tiresService);
         }
     }
 }

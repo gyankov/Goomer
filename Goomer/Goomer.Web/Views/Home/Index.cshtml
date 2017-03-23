@@ -1,7 +1,9 @@
 ﻿@model HomeViewModel
+  @using Goomer.Services.Web
 @using Goomer.Web.Models.Home
 @{
     ViewBag.Title = "Home Page";
+    var identifierProvider = new IdentifierProvider();
 }
 
 <section class="cover image-slider slider-all-controls controls-inside parallax" style="height:50vh;">
@@ -22,7 +24,7 @@
                             В Goomer можеш да търсиш из обяви за гуми с подробна търсачка,
                             <br />както и да добавяш нови напълно безплатно.
                         </p>
-                        <a class="btn btn-lg btn-white" href="#">Разгледай</a>
+                        <a class="btn btn-lg btn-white" href="/Tires/Index">Разгледай</a>
                     </div>
                 </div>
                 <!--end of row-->
@@ -44,7 +46,7 @@
                             В Goomer можеш да търсиш из обяви за гуми с джанти с подробна търсачка,
                             <br />както и да добавяш нови напълно безплатно.
                         </p>
-                        <a class="btn btn-lg btn-white" href="#">Разгледай</a>
+                        <a class="btn btn-lg btn-white" href="/Rims/Index">Разгледай</a>
                     </div>
                 </div>
                 <!--end of row-->
@@ -65,7 +67,7 @@
                             В Goomer можеш да търсиш из обяви за джанти с подробна търсачка,
                             <br />както и да добавяш нови напълно безплатно.
                         </p>
-                        <a class="btn btn-lg btn-white" href="#">Разгледай</a>
+                        <a class="btn btn-lg btn-white" href="/RimsWithTires/Index">Разгледай</a>
                     </div>
                 </div>
                 <!--end of row-->
@@ -99,7 +101,7 @@
             {
                 <div class="col-md-3 col-sm-4 masonry-item col-xs-12">
                     <div class="image-tile outer-title text-center">
-                        <a href="#">
+                        <a href="/Tires/TireAd?id=@identifierProvider.EncodeId(tire.Id)">
                             <img alt="Pic" class="product-thumb" src="@tire.Pictures.First().Url" />
                         </a>
                         <div class="title">
