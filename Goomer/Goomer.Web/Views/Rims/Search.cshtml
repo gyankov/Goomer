@@ -1,7 +1,7 @@
-﻿@using Goomer.Web.Models.Rims
-@model RimViewModel
+﻿@using Goomer.Data.Models.SearchModels
+@model RimsSearchModel
 @{
-    ViewBag.Title = "Add";
+    ViewBag.Title = "Search";
 }
 
 
@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-md-6">
                 <h3 class="uppercase mb0">
-                    <i class="ti-pencil-alt"></i> Добавяне на обява
+                    <i class="ti-pencil-alt"></i> Търсене в джанти
                 </h3>
             </div>
         </div>
@@ -27,7 +27,7 @@
             </div>
         </row>
         <div class="row">
-            @using (Html.BeginForm("Add", "Rims", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("Search", "Rims", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
             {
                 @Html.ValidationSummary("", new { @class = "text-danger" })
 
@@ -40,12 +40,12 @@
 
                     @Html.TextBoxFor(m => m.Siting, new { @class = "form-control", placeholder = "Местоположение" })
 
-                    @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control", placeholder = "Брой", type = "number" })
+                    @Html.TextBoxFor(m => m.QuantityFrom, new { @class = "form-control", placeholder = "Брой", type = "number" })
 
                     <span><b>Неупотребявани:</b></span>
                     <div class="checkbox-option pull-right">
                         <div class="inner"></div>
-                        @Html.CheckBoxFor(m => m.IsBrandNew)
+                        @Html.CheckBoxFor(m => m.OnlyBrandNew)
                     </div>
 
                     @Html.TextBoxFor(m => m.CentralHoleSize, new { @class = "form-control", placeholder = "Централен отвор", type = "number" })
@@ -56,7 +56,9 @@
                         <span>Цолаж:</span>
                         <div class="select-option">
                             <i class="ti-angle-down"></i>
-                            <select class="form-control" data-val="true" data-val-required="Моля изберете цолаж" id="Size" name="Size" type="number">
+                            <select class="form-control" id="Size" name="Size" type="number">
+                                <option value="">
+                                </option>
                                 <option value="10">
                                     10
                                 </option>
@@ -128,7 +130,8 @@
                         <span>Широчина (J):</span>
                         <div class="select-option">
                             <i class="ti-angle-down"></i>
-                            <select class="form-control" data-val="true" data-val-required="Моля изберете широчина.(J)" id="Width" name="Width" type="number">
+                            <select class="form-control" id="Width" name="Width" type="number">
+                                <option value="">   </option>
                                 <option value="4">4    </option>
                                 <option value="4.5">4.5  </option>
                                 <option value="5">5    </option>
@@ -163,7 +166,8 @@
                         <span>Брой болтове:</span>
                         <div class="select-option">
                             <i class="ti-angle-down"></i>
-                            <select class="form-control" data-val="true" data-val-required="Моля изберете височина" id="NumberOfBolts" name="NumberOfBolts" type="number">
+                            <select class="form-control" id="NumberOfBolts" name="NumberOfBolts" type="number">                                
+                                <option value=""></option>
                                 <option value="3">3</option>
                                 <option value="3">4</option>
                                 <option value="3">5</option>
@@ -179,7 +183,8 @@
                         <span>Междуболтово разстояние:</span>
                         <div class="select-option">
                             <i class="ti-angle-down"></i>
-                            <select class="form-control" data-val="true" data-val-required="Моля изберете височина" id="SpaceBetweenBolts" name="SpaceBetweenBolts" type="number">
+                            <select class="form-control" id="SpaceBetweenBolts" name="SpaceBetweenBolts" type="number">
+                                <option value=""></option>
                                 <option value="4">4</option>
                                 <option value="12">12</option>
                                 <option value="98">98</option>
@@ -223,15 +228,8 @@
                 </div>
 
                 <div class="col-sm-3">
-
-                    <div class="input-with-label text-left">
-                        <span>Снимки (до 4 снимки):</span>
-                        <div class="select-option">
-                            <input type="file" name="files" multiple />
-                        </div>
-                    </div>
-                    <input class="form-control" data-val="true" data-val-required="Моля въведете цена." id="Price" name="Price" placeholder="Цена (лв.)" type="number" value="">
-                    <textarea class="form-control" cols="20" id="Description" name="Description" placeholder="Описание" rows="2" style="margin: 0px -0.5px 24px 0px; width: 263px; height: 124px;resize:none"></textarea>
+                    @Html.TextBoxFor(m => m.PriceFrom, new { @class = "form-control", placeholder = "Цена от:", type = "number" })
+                    @Html.TextBoxFor(m => m.PriceTo, new { @class = "form-control", placeholder = "Цена до:", type = "number" })
                     <input type="submit" class="btn btn-default" value="Добави" />
 
                 </div>

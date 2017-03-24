@@ -77,12 +77,7 @@ namespace Goomer.Services.Data
             {
                 tires = tires.Where(x => x.Quantity >= searchModel.QuantityFrom);
             }
-
-            if (searchModel.QuantityFrom != null)
-            {
-                tires = tires.Where(x => x.Quantity >= searchModel.QuantityFrom);
-            }
-
+            
             if (searchModel.Width != null)
             {
                 tires = tires.Where(x => x.Width == searchModel.Width);

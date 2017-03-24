@@ -261,7 +261,9 @@
     <Compile Include="Models\Manage\ManageLoginsViewModel.cs" />
     <Compile Include="Models\Manage\SetPasswordViewModel.cs" />
     <Compile Include="Models\Manage\VerifyPhoneNumberViewModel.cs" />
-    <Compile Include="Models\Rims\RimsViewModel.cs" />
+    <Compile Include="Models\Rims\ListingRimViewModel.cs" />
+    <Compile Include="Models\Rims\RimAdViewModel.cs" />
+    <Compile Include="Models\Rims\RimViewModel.cs" />
     <Compile Include="Models\Tires\ListingTireViewModel.cs" />
     <Compile Include="Models\Tires\TireAdViewModel.cs" />
     <Compile Include="Models\Tires\TireViewModel.cs" />
@@ -329,6 +331,9 @@
     <Content Include="Views\Tires\ListingTire.cshtml" />
     <Content Include="Views\Tires\TireAd.cshtml" />
     <Content Include="Views\Rims\Add.cshtml" />
+    <Content Include="Views\Rims\Search.cshtml" />
+    <Content Include="Views\Rims\ListingRim.cshtml" />
+    <Content Include="Views\Rims\RimAd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

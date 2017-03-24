@@ -1,0 +1,85 @@
+﻿@using Goomer.Web.Models.Rims
+@model RimAdViewModel
+@{
+    ViewBag.Title = "RimAd";
+}
+
+<section>
+    <div class="container">
+        <div class="product-single">
+            <div class="row mb24 mb-xs-48">
+                <div class="col-md-5 col-sm-6">
+                    <div class="image-slider slider-thumb-controls controls-inside">
+                        <ul class="slides">
+                            @foreach (var picture in Model.Pictures)
+                            {
+                                <li>
+                                    <img alt="Image" src="@picture.Url" />
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <!--end of image slider-->
+                </div>
+                <div class="col-md-5 col-md-offset-1 col-sm-6">
+                    <div class="description">
+                        <h4 class="uppercase"> @HttpUtility.HtmlEncode(Model.Brand) - @HttpUtility.HtmlEncode(Model.Model)</h4>
+                        <div class="mb32 mb-xs-24">
+                            <span class="number price">@HttpUtility.HtmlEncode(Model.Price) лв.</span>
+                        </div>
+
+                        <ul>
+                            <li>
+                                <strong>Размер: </strong>   @HttpUtility.HtmlEncode(Model.Size)R / @HttpUtility.HtmlEncode(Model.Width) J
+                            </li>
+                            <li>
+                                <strong>Състояние: </strong> @(Model.IsBrandNew ? " Нови" : " Употребявани")
+                            </li>
+                            <li>
+                                <strong>Брой болтове:</strong> @HttpUtility.HtmlEncode(Model.NumberOfBolts)
+                            </li>
+                            <li>
+                                <strong>Междуболтово разстояние:</strong> @HttpUtility.HtmlEncode(Model.SpaceBetweenBolts) 
+                            </li>
+                            <li>
+                                <strong>Централен отвор:</strong> @HttpUtility.HtmlEncode(Model.CentralHoleSize)
+                            </li>
+                            <li>
+                                <strong>Брой:</strong> @HttpUtility.HtmlEncode(Model.Quantity)
+                            </li>
+                            <li>
+                                <strong>Местоположение:</strong> @HttpUtility.HtmlEncode(Model.Siting)
+                            </li>
+                        </ul>
+                        <p>
+                            Последна редакция: @HttpUtility.HtmlEncode(Model.ModifiedOn)
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--end of row-->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="tabbed-content text-tabs">
+                        <ul class="tabs">
+                            <li class="active">
+                                <div class="tab-title">
+                                    <span>Описание</span>
+                                </div>
+                                <div class="tab-content">
+                                    <p>
+                                        @HttpUtility.HtmlEncode(Model.Description)
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--end of text tabs-->
+                </div>
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of product single-->
+    </div>
+    <!--end of container-->
+</section>

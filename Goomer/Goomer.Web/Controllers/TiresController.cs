@@ -30,7 +30,7 @@ namespace Goomer.Web.Controllers
             this.fileSaver = fileSaver;
             this.identifierProvider = identifierProvider;
         }
-       // [OutputCache(Duration = 60 * 60 * 24, Location = OutputCacheLocation.Any)]
+        [OutputCache(Duration = 60 * 60 * 24, Location = OutputCacheLocation.Any)]
         [HttpGet]
         public ActionResult Add()
         {

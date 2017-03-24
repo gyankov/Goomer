@@ -8,7 +8,7 @@ using System.Web;
 
 namespace Goomer.Web.Models.Rims
 {
-    public class RimsViewModel : IMapTo<Rim>
+    public class RimViewModel : IMapTo<Rim>
     {
         [Required(ErrorMessage = "Моля въведете марка.")]
         public string Brand { get; set; }
