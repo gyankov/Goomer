@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace Goomer.Web.Controllers
 {
@@ -29,7 +30,7 @@ namespace Goomer.Web.Controllers
             this.fileSaver = fileSaver;
             this.identifierProvider = identifierProvider;
         }
-
+       // [OutputCache(Duration = 60 * 60 * 24, Location = OutputCacheLocation.Any)]
         [HttpGet]
         public ActionResult Add()
         {
@@ -60,6 +61,7 @@ namespace Goomer.Web.Controllers
             return Redirect("/");
         }
 
+        [OutputCache(Duration = 60 * 60 * 24, Location = OutputCacheLocation.Any)]
         [AllowAnonymous]
         [HttpGet]
         public ActionResult Search()
@@ -96,7 +98,7 @@ namespace Goomer.Web.Controllers
         public ActionResult Index()
         {
             var tires = this.tiresService.LatestPosts().To<ListingTireViewModel>().ToList();
-            return View("ListingTire", tiresService);
+            return View("ListingTire", tires);
         }
     }
 }

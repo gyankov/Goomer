@@ -23,36 +23,36 @@
                 </div>
                 <div class="col-md-5 col-md-offset-1 col-sm-6">
                     <div class="description">
-                        <h4 class="uppercase">@Model.Brand - @Model.Model</h4>
+                        <h4 class="uppercase"> @HttpUtility.HtmlEncode(Model.Brand) - @HttpUtility.HtmlEncode(Model.Model)</h4>
                         <div class="mb32 mb-xs-24">
-                            <span class="number price">@Model.Price лв.</span>
+                            <span class="number price">@HttpUtility.HtmlEncode(Model.Price) лв.</span>
                         </div>
                        
                         <ul>
                             <li>
-                                <strong>Размер: </strong> @Model.Width / @Model.Height  @Model.Size R
+                                <strong>Размер: </strong> @HttpUtility.HtmlEncode(Model.Width) / @HttpUtility.HtmlEncode(Model.Height)  @HttpUtility.HtmlEncode(Model.Size)R
                             </li>
                             <li>
                                 <strong>Състояние: </strong> @(Model.IsBrandNew? " Нови": " Употребявани")
                             </li>
                             <li>
-                                <strong>ДОТ:</strong> @Model.Dot
+                                <strong>ДОТ:</strong> @HttpUtility.HtmlEncode(Model.Dot)
                             </li>
                             <li>
-                                <strong>Грайфер:</strong> @Model.GrappleMm mm
+                                <strong>Грайфер:</strong> @HttpUtility.HtmlEncode(Model.GrappleMm) mm
                             </li>
                             <li>
-                                <strong>Сеззоност:</strong> @Model.Season
+                                <strong>Сеззоност:</strong> @HttpUtility.HtmlEncode(Model.Season)
                             </li>
                             <li>
-                                <strong>Брой:</strong> @Model.Quantity
+                                <strong>Брой:</strong> @HttpUtility.HtmlEncode(Model.Quantity)
                             </li>
                             <li>
-                                <strong>Местоположение:</strong> @Model.Siting
+                                <strong>Местоположение:</strong> @HttpUtility.HtmlEncode(Model.Siting)
                             </li>
                         </ul>
                         <p>
-                            Последна редакция: @Model.ModifiedOn
+                            Последна редакция: @HttpUtility.HtmlEncode(Model.ModifiedOn)
                         </p>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="tab-content">
                                     <p>
-                                        @Model.Description
+                                        @HttpUtility.HtmlEncode(Model.Description)
                                     </p>
                                 </div>
                             </li>
