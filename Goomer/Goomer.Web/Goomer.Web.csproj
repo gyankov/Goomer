@@ -231,10 +231,12 @@
     <Compile Include="App_Start\ServicesNinjectModule.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
     <Compile Include="Controllers\RimsController.cs" />
+    <Compile Include="Controllers\RimsWithTiresController.cs" />
     <Compile Include="Controllers\TiresController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -261,6 +263,9 @@
     <Compile Include="Models\Manage\ManageLoginsViewModel.cs" />
     <Compile Include="Models\Manage\SetPasswordViewModel.cs" />
     <Compile Include="Models\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="Models\RimsWithTires\ListingTireWithRimViewModel.cs" />
+    <Compile Include="Models\RimsWithTires\RimWithTireAdViewModel.cs" />
+    <Compile Include="Models\RimsWithTires\RimWithTireViewModel.cs" />
     <Compile Include="Models\Rims\ListingRimViewModel.cs" />
     <Compile Include="Models\Rims\RimAdViewModel.cs" />
     <Compile Include="Models\Rims\RimViewModel.cs" />
@@ -334,6 +339,12 @@
     <Content Include="Views\Rims\Search.cshtml" />
     <Content Include="Views\Rims\ListingRim.cshtml" />
     <Content Include="Views\Rims\RimAd.cshtml" />
+    <Content Include="Views\RimsWithTires\Add.cshtml" />
+    <Content Include="Views\RimsWithTires\ListingRimWithTire.cshtml" />
+    <Content Include="Views\RimsWithTires\RimWithTireAd.cshtml" />
+    <Content Include="Views\RimsWithTires\Search.cshtml" />
+    <Content Include="Views\Error\Error404.cshtml" />
+    <Content Include="Views\Error\Error500.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

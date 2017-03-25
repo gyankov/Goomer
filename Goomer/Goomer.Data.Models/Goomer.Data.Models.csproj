@@ -70,6 +70,7 @@
     <Compile Include="RimWithTire.cs" />
     <Compile Include="RimWithTirePicture.cs" />
     <Compile Include="SearchModels\RimsSearchModel.cs" />
+    <Compile Include="SearchModels\RimsWithTiresSearchModel.cs" />
     <Compile Include="SearchModels\TiresSearchModel.cs" />
     <Compile Include="Tire.cs" />
     <Compile Include="TirePicture.cs" />

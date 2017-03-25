@@ -4,7 +4,7 @@ using Goomer.Services.Data.Contracts;
 using Goomer.Services.Web.Contracts;
 using Goomer.Web.Infrastructure.FileSystem;
 using Goomer.Web.Infrastructure.Mapping;
-using Goomer.Web.Models.Tires;
+using Goomer.Web.Models.RimsWithTires;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -16,20 +16,22 @@ using System.Web.UI;
 namespace Goomer.Web.Controllers
 {
     [Authorize]
-    public class TiresController : Controller
+    public class RimsWithTiresController : Controller
     {
+
         private readonly IUsersService usersService;
-        private readonly ITiresService tiresService;
+        private readonly IRimsWithTiresService rimWithTireService;
         private readonly IFileSaver fileSaver;
         private readonly IIdentifierProvider identifierProvider;
 
-        public TiresController(IUsersService usersService, ITiresService tiresService, IFileSaver fileSaver, IIdentifierProvider identifierProvider)
+        public RimsWithTiresController(IUsersService usersService, IRimsWithTiresService rimWithTireService, IFileSaver fileSaver, IIdentifierProvider identifierProvider)
         {
             this.usersService = usersService;
-            this.tiresService = tiresService;
+            this.rimWithTireService = rimWithTireService;
             this.fileSaver = fileSaver;
             this.identifierProvider = identifierProvider;
         }
+
         [OutputCache(Duration = 60 * 60 * 24, Location = OutputCacheLocation.Any)]
         [HttpGet]
         public ActionResult Add()
@@ -38,11 +40,11 @@ namespace Goomer.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(TireViewModel tire, IEnumerable<HttpPostedFileBase> files)
+        public ActionResult Add(RimWithTireViewModel rimWithTire, IEnumerable<HttpPostedFileBase> files)
         {
             if (!ModelState.IsValid)
             {
-                return View(tire);
+                return View(rimWithTire);
             }
             var userId = this.User.Identity.GetUserId();
             var picturesPaths = new List<string>();
@@ -57,9 +59,10 @@ namespace Goomer.Web.Controllers
                 picturesPaths.Add("/Content/Gallery/" + path);
                 fileSaver.SaveFile("/Content/Gallery/" + path, file.InputStream);
             }
-            this.tiresService.AddNewTireAd(userId, AutoMapperConfig.Configuration.CreateMapper().Map<Tire>(tire), picturesPaths);
+            this.rimWithTireService.AddNewTireAd(userId, AutoMapperConfig.Configuration.CreateMapper().Map<RimWithTire>(rimWithTire), picturesPaths);
             return Redirect("/");
         }
+
 
         [OutputCache(Duration = 60 * 60 * 24, Location = OutputCacheLocation.Any)]
         [AllowAnonymous]
@@ -71,17 +74,17 @@ namespace Goomer.Web.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public ActionResult Search(TiresSearchModel tire)
+        public ActionResult Search(RimsWithTiresSearchModel rimWithTire)
         {
-            return RedirectToAction("Searching", tire);
+            return RedirectToAction("Searching", rimWithTire);
         }
 
         [AllowAnonymous]
         [HttpGet]
-        public ActionResult Searching(TiresSearchModel tire)
+        public ActionResult Searching(RimsWithTiresSearchModel rimWithTire)
         {
-            var tires = this.tiresService.Filter(tire).To<ListingTireViewModel>().ToList();
-            return View("ListingTire", tires);
+            var rimsWithTires = this.rimWithTireService.Filter(rimWithTire).To<ListingTireWithRimViewModel>().ToList();
+            return View("ListingRimWithTire", rimsWithTires);
         }
 
         [AllowAnonymous]
@@ -89,15 +92,15 @@ namespace Goomer.Web.Controllers
         public ActionResult TireAd(string id)
         {
             var actualId = this.identifierProvider.DecodeId(id);
-            var tire = this.tiresService.GetById(actualId);
+            var rimWithTire = this.rimWithTireService.GetById(actualId);
 
-            return View(AutoMapperConfig.Configuration.CreateMapper().Map<TireAdViewModel>(tire));
+            return View(AutoMapperConfig.Configuration.CreateMapper().Map<RimWithTireAdViewModel>(rimWithTire));
         }
         
         public ActionResult Index()
         {
-            var tires = this.tiresService.LatestPosts().To<ListingTireViewModel>().ToList();
-            return View("ListingTire", tires);
+            var tires = this.rimWithTireService.LatestPosts().To<ListingTireWithRimViewModel>().ToList();
+            return View("ListingRimWithTire", tires);
         }
     }
 }
