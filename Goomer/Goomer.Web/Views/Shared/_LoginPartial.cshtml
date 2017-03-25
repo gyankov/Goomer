@@ -6,9 +6,20 @@
         @Html.AntiForgeryToken()
     }
 
+    if (this.User.IsInRole("Admin"))
+    {
+
+        <li class="has-dropdown">
+            <a href="#"> Админ</a>
+            <ul>
+                <li><a href="/Administration/Users">Потребители</a></li>
+            </ul>
+        </li>
+    }
+
     <li class="has-dropdown">
-       <a href="#">@this.User.Identity.Name</a>
-        <ul >
+        <a href="#">@this.User.Identity.Name</a>
+        <ul>
             <li><a href="/Tires/Add">Нова обява гуми</a></li>
             <li><a href="/Rims/Add">Нова обява джанти</a></li>
             <li><a href="/RimsWithTires/Add">Нова обява гуми с джанти</a></li>

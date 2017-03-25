@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Goomer.Data.Models
 {
@@ -32,8 +33,8 @@ namespace Goomer.Data.Models
         public DateTime? ModifiedOn { get; set; }
 
         public string Name { get; set; }
-        
-        public string Phone { get; set; }
+
+        public bool IsAdmin { get; set; }
 
         public virtual ICollection<Rim> Rims
         {
@@ -60,5 +61,20 @@ namespace Goomer.Data.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public void SetAdmin()
+        {
+            if (IsAdmin && !this.Roles.Any(x => x.RoleId == "1"))
+            {
+                this.Roles.Add(new IdentityUserRole { RoleId = "1", UserId = this.Id });
+            }
+
+            if (!IsAdmin && this.Roles.Any(x => x.RoleId == "1"))
+            {
+                var role = this.Roles.Where(x => x.RoleId == "1").FirstOrDefault();
+                this.Roles.Remove(role);
+            }
+        }
+
     }
 }

@@ -12,5 +12,11 @@ namespace Goomer.Services.Data.Contracts
         IQueryable<User> AllUsers();
 
         User GetById(object id);
+
+        bool ChekIfDeleted(string username);
+
+        User GetByUserName(string username);
+
+        void Update(object userId, bool IsDeleted, string Email, string PhoneNumber, bool IsAdmin);
     }
 }
