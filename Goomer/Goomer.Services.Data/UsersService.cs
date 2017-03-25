@@ -30,12 +30,13 @@ namespace Goomer.Services.Data
         public bool ChekIfDeleted(string username)
         {
 
-            return !this.GetByUserName(username).IsDeleted;
+            return this.GetByUserName(username).IsDeleted;
         }
 
         public User GetByUserName(string username)
         {
-            return this.usersRepo.All().Where(x => x.UserName == username).FirstOrDefault();
+            var user = this.usersRepo.All().Where(x => x.UserName == username).FirstOrDefault();
+            return user;
         }
 
         public void Update(object userId, bool IsDeleted, string Email, string PhoneNumber, bool IsAdmin)

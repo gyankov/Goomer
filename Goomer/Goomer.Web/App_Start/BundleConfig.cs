@@ -8,12 +8,18 @@ namespace Goomer.Web
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            BundleTable.EnableOptimizations = true;
+
+            RegisterStyles(bundles);
+            RegisterScripts(bundles);
+
+            bundles.IgnoreList.Clear();
+        }
+
+        private static void RegisterScripts(BundleCollection bundles)
+        {
             //bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
             //            "~/Scripts/jquery-{version}.js"));
-
-            bundles.Add(new StyleBundle("~/Content/kendo/css").Include("~/Content/Kendo/kendo.common.*", 
-                "~/Content/Kendo/kendo.default.*",
-                "~/Content/kendo/kendo.bootstrap.min.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/Kendo/jquery.min.js"));
 
@@ -27,15 +33,24 @@ namespace Goomer.Web
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap")
+                .Include(
+                "~/Scripts/bootstrap.js",
+                "~/Scripts/respond.js"));
+        }
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+        private static void RegisterStyles(BundleCollection bundles)
+        {
+            bundles.Add(new StyleBundle("~/Content/kendo/css")
+               .Include(
+               "~/Content/Kendo/kendo.common.*",
+               "~/Content/Kendo/kendo.default.*",
+               "~/Content/kendo/kendo.bootstrap.min.css"));
 
-            bundles.IgnoreList.Clear();
+            bundles.Add(new StyleBundle("~/Content/css")
+                .Include(
+                "~/Content/bootstrap.css",
+                "~/Content/site.css"));
         }
     }
 }
