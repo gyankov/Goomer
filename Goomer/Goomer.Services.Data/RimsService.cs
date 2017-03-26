@@ -50,6 +50,11 @@ namespace Goomer.Services.Data
 
         }
 
+        public IQueryable<Rim> GetNextFive(RimsSearchModel searchModel, int page)
+        {
+            return this.Filter(searchModel).OrderBy(x=> x.Brand).Skip(page * 5).Take(5);
+        }
+
         public IQueryable<Rim> Filter(RimsSearchModel searchModel)
         {
             var rims = this.rimsRepo.All();
@@ -114,7 +119,7 @@ namespace Goomer.Services.Data
                 rims = rims.Where(x => x.IsBrandNew);
             }
 
-            return rims;
+            return rims.Take(5);
         }
     }
 }

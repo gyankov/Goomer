@@ -39,7 +39,7 @@ namespace Goomer.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add( RimViewModel rim, IEnumerable<HttpPostedFileBase> files)
+        public ActionResult Add(RimViewModel rim, IEnumerable<HttpPostedFileBase> files)
         {
             if (!ModelState.IsValid)
             {
@@ -63,7 +63,7 @@ namespace Goomer.Web.Controllers
             return Redirect("/");
         }
 
-       // [OutputCache(Duration = 60 * 60 * 24, Location = OutputCacheLocation.Any)]
+        // [OutputCache(Duration = 60 * 60 * 24, Location = OutputCacheLocation.Any)]
         [AllowAnonymous]
         [HttpGet]
         public ActionResult Search()
@@ -84,6 +84,14 @@ namespace Goomer.Web.Controllers
         {
             var tires = this.rimsService.Filter(rim).To<ListingRimViewModel>().ToList();
             return View("ListingRim", tires);
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult SearchingNextFive(RimsSearchModel rim, int page)
+        {
+            var tires = this.rimsService.GetNextFive(rim, page).To<ListingRimViewModel>().ToList();
+            return PartialView("PartialRims", tires);
         }
 
         [AllowAnonymous]

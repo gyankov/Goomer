@@ -449,7 +449,9 @@
     <Content Include="Content\Kendo\kendo.silver.mobile.min.css.map" />
     <Content Include="Content\Kendo\kendo.uniform.min.css.map" />
     <Content Include="Content\Kendo\kendo.uniform.mobile.min.css.map" />
+    <Content Include="Areas\Administration\Views\Templates\EditTemplates\EditUser.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\infinite-scroll.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -463,6 +465,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\rims-scroll.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -513,6 +516,8 @@
     <Content Include="Scripts\Kendo\jquery.min.map" />
     <Content Include="Scripts\Kendo\kendo.all.min.js.map" />
     <Content Include="Scripts\Kendo\kendo.aspnetmvc.min.js.map" />
+    <Content Include="Views\Templates\DisplayTemplates\CustomDecimal.cshtml" />
+    <Content Include="Views\Rims\PartialRims.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -536,7 +541,6 @@
     <Folder Include="Content\Kendo\textures\" />
     <Folder Include="Content\Kendo\Uniform\" />
     <Folder Include="Models\Shared\" />
-    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
