@@ -2,6 +2,7 @@
 using Goomer.Data.Models.SearchModels;
 using Goomer.Services.Data.Contracts;
 using Goomer.Services.Web.Contracts;
+using Goomer.Web.Hubs;
 using Goomer.Web.Infrastructure.FileSystem;
 using Goomer.Web.Infrastructure.Mapping;
 using Goomer.Web.Models.Rims;
@@ -23,12 +24,21 @@ namespace Goomer.Web.Controllers
         private readonly IRimsService rimsService;
         private readonly IFileSaver fileSaver;
         private readonly IIdentifierProvider identifierProvider;
-        public RimsController(IUsersService usersService, IRimsService rimsService, IFileSaver fileSaver, IIdentifierProvider identifierProvider)
+        private readonly IStatisticsHubCorresponder statisticsHubCorresponder;
+        private readonly IStatisticsService statisticsService;
+        public RimsController(
+            IUsersService usersService,
+            IRimsService rimsService, 
+            IFileSaver fileSaver, IIdentifierProvider identifierProvider, 
+            IStatisticsHubCorresponder statisticsHubCorresponder,
+            IStatisticsService statisticsService)
         {
             this.usersService = usersService;
             this.rimsService = rimsService;
             this.fileSaver = fileSaver;
             this.identifierProvider = identifierProvider;
+            this.statisticsHubCorresponder = statisticsHubCorresponder;
+            this.statisticsService = statisticsService;
         }
 
         [OutputCache(Duration = 60 * 60 * 24, Location = OutputCacheLocation.Any)]
@@ -59,7 +69,8 @@ namespace Goomer.Web.Controllers
                 picturesPaths.Add("/Content/Gallery/" + path);
                 fileSaver.SaveFile("/Content/Gallery/" + path, file.InputStream);
             }
-            this.rimsService.AddNewTireAd(userId, AutoMapperConfig.Configuration.CreateMapper().Map<Rim>(rim), picturesPaths);
+            this.rimsService.AddNewTireAd(userId, AutoMapperConfig.Configuration.CreateMapper().Map<Rim>(rim), picturesPaths);            
+            this.statisticsHubCorresponder.UpdateAdsCount(this.statisticsService.TotalAds());
             return Redirect("/");
         }
 

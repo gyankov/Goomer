@@ -21,13 +21,15 @@ namespace Goomer.Web.Controllers
         private readonly IRimsWithTiresService rimsWithTyresService;
         private readonly ICacheService cacheService;
         private readonly IIdentifierProvider identifierProvider;
+        private readonly IStatisticsService statisticsService;
         public HomeController(
             IUsersService usersService,
             ITiresService tiresService,
             IRimsService rimsService,
             IRimsWithTiresService rimsWithTyresService,
             ICacheService cacheService,
-            IIdentifierProvider identifierProvider)
+            IIdentifierProvider identifierProvider,
+            IStatisticsService statisticsService)
         {
             this.usersService = usersService;
             this.tiresService = tiresService;
@@ -35,6 +37,7 @@ namespace Goomer.Web.Controllers
             this.rimsWithTyresService = rimsWithTyresService;
             this.cacheService = cacheService;
             this.identifierProvider = identifierProvider;
+            this.statisticsService = statisticsService;
         }
         public ActionResult Index()
         {
@@ -56,7 +59,7 @@ namespace Goomer.Web.Controllers
                 () => this.rimsWithTyresService.LatestPosts().To<RimWithTireViewModel>().ToList(),
                 10 * 60);
 
-            return View(new HomeViewModel { Rims = rims, RimsWithTires = rimsWithTires, Tires = tires });
+            return View(new HomeViewModel { Rims = rims, RimsWithTires = rimsWithTires, Tires = tires , AdsCount = this.statisticsService.TotalAds()});
         }
     }
 }

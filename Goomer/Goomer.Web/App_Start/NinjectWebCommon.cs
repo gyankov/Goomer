@@ -10,6 +10,7 @@ namespace Goomer.Web.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using Hubs;
 
     public static class NinjectWebCommon 
     {
@@ -63,7 +64,7 @@ namespace Goomer.Web.App_Start
         {
             kernel.Load(new DataNinjectModule());
             kernel.Load(new ServicesNinjectModule());
-
+            kernel.Bind<IStatisticsHubCorresponder>().To<StatisticsHubCorresponder>();
         }
     }
 }

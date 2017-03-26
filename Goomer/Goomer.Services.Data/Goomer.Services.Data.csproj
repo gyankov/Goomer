@@ -59,11 +59,13 @@
   <ItemGroup>
     <Compile Include="Contracts\IRimsService.cs" />
     <Compile Include="Contracts\IRimsWithTiresService.cs" />
+    <Compile Include="Contracts\IStatisticsService.cs" />
     <Compile Include="Contracts\ITiresService.cs" />
     <Compile Include="Contracts\IUsersService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RimsService.cs" />
     <Compile Include="RimsWithTyresService.cs" />
+    <Compile Include="StatisticsService.cs" />
     <Compile Include="TiresService.cs" />
     <Compile Include="UsersService.cs" />
   </ItemGroup>

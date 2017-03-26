@@ -2,6 +2,7 @@
 using Goomer.Data.Models.SearchModels;
 using Goomer.Services.Data.Contracts;
 using Goomer.Services.Web.Contracts;
+using Goomer.Web.Hubs;
 using Goomer.Web.Infrastructure.FileSystem;
 using Goomer.Web.Infrastructure.Mapping;
 using Goomer.Web.Models.Tires;
@@ -22,13 +23,24 @@ namespace Goomer.Web.Controllers
         private readonly ITiresService tiresService;
         private readonly IFileSaver fileSaver;
         private readonly IIdentifierProvider identifierProvider;
+        private readonly IStatisticsHubCorresponder statisticsHubCorresponder;
+        private readonly IStatisticsService statisticsService;
 
-        public TiresController(IUsersService usersService, ITiresService tiresService, IFileSaver fileSaver, IIdentifierProvider identifierProvider)
+        public TiresController(
+            IUsersService usersService,
+            ITiresService tiresService,
+            IFileSaver fileSaver,
+            IIdentifierProvider identifierProvider,
+            IStatisticsHubCorresponder statisticsHubCorresponder,
+            IStatisticsService statisticsService
+            )
         {
             this.usersService = usersService;
             this.tiresService = tiresService;
             this.fileSaver = fileSaver;
             this.identifierProvider = identifierProvider;
+            this.statisticsHubCorresponder = statisticsHubCorresponder;
+            this.statisticsService = statisticsService;
         }
         [OutputCache(Duration = 60 * 60 * 24, Location = OutputCacheLocation.Any)]
         [HttpGet]
@@ -58,6 +70,7 @@ namespace Goomer.Web.Controllers
                 fileSaver.SaveFile("/Content/Gallery/" + path, file.InputStream);
             }
             this.tiresService.AddNewTireAd(userId, AutoMapperConfig.Configuration.CreateMapper().Map<Tire>(tire), picturesPaths);
+            this.statisticsHubCorresponder.UpdateAdsCount(this.statisticsService.TotalAds());
             return Redirect("/");
         }
 
@@ -101,7 +114,7 @@ namespace Goomer.Web.Controllers
 
             return View(AutoMapperConfig.Configuration.CreateMapper().Map<TireAdViewModel>(tire));
         }
-        
+
         public ActionResult Index()
         {
             var tires = this.tiresService.LatestPosts().To<ListingTireViewModel>().ToList();
