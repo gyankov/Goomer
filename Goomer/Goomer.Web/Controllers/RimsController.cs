@@ -82,7 +82,7 @@ namespace Goomer.Web.Controllers
         [HttpGet]
         public ActionResult Searching(RimsSearchModel rim)
         {
-            var tires = this.rimsService.Filter(rim).To<ListingRimViewModel>().ToList();
+            var tires = this.rimsService.GetFirstFive(rim).To<ListingRimViewModel>().ToList();
             return View("ListingRim", tires);
         }
 

@@ -83,13 +83,21 @@ namespace Goomer.Web.Controllers
         [HttpGet]
         public ActionResult Searching(RimsWithTiresSearchModel rimWithTire)
         {
-            var rimsWithTires = this.rimWithTireService.Filter(rimWithTire).To<ListingTireWithRimViewModel>().ToList();
+            var rimsWithTires = this.rimWithTireService.GetFirstFive(rimWithTire).To<ListingTireWithRimViewModel>().ToList();
             return View("ListingRimWithTire", rimsWithTires);
         }
 
         [AllowAnonymous]
         [HttpGet]
-        public ActionResult TireAd(string id)
+        public ActionResult SearchingNextFive(RimsWithTiresSearchModel rim, int page)
+        {
+            var tires = this.rimWithTireService.GetNextFive(rim, page).To<ListingTireWithRimViewModel>().ToList();
+            return PartialView("PartialRimsWithTires", tires);
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult RimWithTireAd(string id)
         {
             var actualId = this.identifierProvider.DecodeId(id);
             var rimWithTire = this.rimWithTireService.GetById(actualId);

@@ -80,8 +80,16 @@ namespace Goomer.Web.Controllers
         [HttpGet]
         public ActionResult Searching(TiresSearchModel tire)
         {
-            var tires = this.tiresService.Filter(tire).To<ListingTireViewModel>().ToList();
+            var tires = this.tiresService.GetFirstFive(tire).To<ListingTireViewModel>().ToList();
             return View("ListingTire", tires);
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult SearchingNextFive(TiresSearchModel rim, int page)
+        {
+            var tires = this.tiresService.GetNextFive(rim, page).To<ListingTireViewModel>().ToList();
+            return PartialView("PartialTires", tires);
         }
 
         [AllowAnonymous]

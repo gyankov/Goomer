@@ -49,6 +49,11 @@ namespace Goomer.Services.Data
             this.uow.Commit();
         }
 
+        public IQueryable<Tire> GetNextFive(TiresSearchModel searchModel, int page)
+        {
+            return this.Filter(searchModel).Skip(page * 5).Take(5);
+        }
+
         public IQueryable<Tire> Filter(TiresSearchModel searchModel)
         {
             var tires = this.tiresRepo.All();
@@ -128,7 +133,12 @@ namespace Goomer.Services.Data
                 tires = tires.Where(x => x.IsBrandNew);
             }
 
-            return tires;
+            return tires.OrderBy(x=> x.Brand);
+        }
+
+        public IQueryable<Tire> GetFirstFive(TiresSearchModel searchModel)
+        {
+            return this.Filter(searchModel).Take(5);
         }
     }
 }

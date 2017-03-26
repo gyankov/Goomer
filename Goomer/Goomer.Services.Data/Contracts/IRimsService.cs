@@ -7,6 +7,8 @@ namespace Goomer.Services.Data.Contracts
 {
     public interface IRimsService
     {
+        IQueryable<Rim> GetFirstFive(RimsSearchModel searchModel);
+
         IQueryable<Rim> GetNextFive(RimsSearchModel searchModel, int page);
 
         IQueryable<Rim> LatestPosts();

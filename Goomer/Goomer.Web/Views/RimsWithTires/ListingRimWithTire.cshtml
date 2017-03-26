@@ -22,32 +22,34 @@
 </section>
 @if (Model.Count() > 0)
 {
-    <section>
-        <div class="container">
-            @foreach (var rim in Model)
-            {
-                <div class="row">
-                    <div class="col-sm-7 col-sm-offset-2">
-                        <div class="image-tile outer-title text-center">
-                            <a href="/Rims/RimAd?id=@identifierProvider.EncodeId(rim.Id)">
-                                <img alt="Pic" class="product-thumb" src="@rim.Pictures.First().Url" />
-                            </a>
-                            <div class="title" style="display:inline-block">
-                                <h3 class="mb0">
-                                    @rim.Brand @rim.Model <b>@rim.Price лв.</b>
-                                </h3>
-                                <span class="mb16 display-block">Последно Коригирана: @rim.ModifiedOn </span>
-                                <span class="mb16 display-block">Местоположение: @rim.Siting </span>
-                                <span class="mb16 display-block">Състояние: @( rim.IsBrandNew ? " Нови" : " Употребявани" )</span>
+    <div class="holder">
+        <section>
+            <div class="container">
+                @foreach (var rim in Model)
+                {
+                    <div style="margin-bottom:50px" class="row">
+                        <div class="col-sm-7 col-sm-offset-2">
+                            <div class="image-tile outer-title text-center">
+                                <a href="/RimsWithTires/RimWithTireAd?id=@identifierProvider.EncodeId(rim.Id)">
+                                    <img alt="Pic" class="product-thumb" src="@rim.Pictures.First().Url" />
+                                </a>
+                                <div class="title" style="display:inline-block">
+                                    <h3 class="mb0">
+                                        @rim.Brand @rim.Model <b>@rim.Price лв.</b>
+                                    </h3>
+                                    <span style="width:450px" class="mb16 display-block">Последно Коригирана: @rim.ModifiedOn </span>
+                                    <span style="width:450px" class="mb16 display-block">Местоположение: @rim.Siting </span>
+                                    <span style="width:450px" class="mb16 display-block">Състояние: @( rim.IsBrandNew ? " Нови" : " Употребявани" )</span>
 
+                                </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
-                </div>
-            }
-        </div>
-    </section>
+                }
+            </div>
+        </section>
+    </div>
 }
 else
 {
@@ -60,3 +62,6 @@ else
     </section>
 
 }
+
+<script src="/Scripts/infinite-scroll.js"></script>
+<script src="/Scripts/rims-with-tires-scroll.js"></script>

@@ -22,32 +22,34 @@
 </section>
 @if (Model.Count() > 0)
 {
-    <section>
-        <div class="container">
-            @foreach (var tire in Model)
-            {
-                <div class="row">
-                    <div class="col-sm-7 col-sm-offset-2">
-                        <div class="image-tile outer-title text-center">
-                            <a href="/Tires/TireAd?id=@identifierProvider.EncodeId(tire.Id)">
-                                <img alt="Pic" class="product-thumb" src="@tire.Pictures.First().Url" />
-                            </a>
-                            <div class="title" style="display:inline-block">
-                                <h3 class="mb0">
-                                    @tire.Brand @tire.Model <b>@tire.Price лв.</b>
-                                </h3>
-                                <span class="mb16 display-block">Последно Коригирана: @tire.ModifiedOn </span>
-                                <span class="mb16 display-block">Местоположение: @tire.Siting </span>
-                                <span class="mb16 display-block">Състояние: @( tire.IsBrandNew ? " Нови" : " Употребявани" )</span>
+    <div class="holder">
+        <section>
+            <div class="container">
+                @foreach (var tire in Model)
+                {
+                    <div style="margin-bottom:50px" class="row">
+                        <div class="col-sm-7 col-sm-offset-2">
+                            <div class="image-tile outer-title text-center">
+                                <a href="/Tires/TireAd?id=@identifierProvider.EncodeId(tire.Id)">
+                                    <img alt="Pic" class="product-thumb" src="@tire.Pictures.First().Url" />
+                                </a>
+                                <div class="title" style="display:inline-block">
+                                    <h3 class="mb0">
+                                        @tire.Brand @tire.Model <b>@tire.Price лв.</b>
+                                    </h3>
+                                    <span style="width:450px" class="mb16 display-block">Последно Коригирана: @tire.ModifiedOn </span>
+                                    <span style="width:450px" class="mb16 display-block">Местоположение: @tire.Siting </span>
+                                    <span style="width:450px" class="mb16 display-block">Състояние: @( tire.IsBrandNew ? " Нови" : " Употребявани" )</span>
 
+                                </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
-                </div>
-            }
-        </div>
-    </section>
+                }
+            </div>
+        </section>
+    </div>
 }
 else
 {
@@ -60,3 +62,7 @@ else
     </section>
 
 }
+
+
+<script src="/Scripts/infinite-scroll.js"></script>
+<script src="/Scripts/tires-scroll.js"></script>

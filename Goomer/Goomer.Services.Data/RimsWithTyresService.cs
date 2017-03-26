@@ -4,6 +4,7 @@ using System.Linq;
 using Goomer.Services.Data.Contracts;
 using System.Collections.Generic;
 using Goomer.Data.Models.SearchModels;
+using System;
 
 namespace Goomer.Services.Data
 {
@@ -43,6 +44,11 @@ namespace Goomer.Services.Data
                 rimWithTire.Pictures.Add(picture);
             }
             this.uow.Commit();
+        }
+
+        public IQueryable<RimWithTire> GetNextFive(RimsWithTiresSearchModel searchModel, int page)
+        {
+            return this.Filter(searchModel).Skip(page * 5).Take(5);
         }
 
         public IQueryable<RimWithTire> Filter(RimsWithTiresSearchModel searchModel)
@@ -139,7 +145,12 @@ namespace Goomer.Services.Data
                 rimsWithTires = rimsWithTires.Where(x => x.SpaceBetweenBolts == searchModel.SpaceBetweenBolts);
             }
 
-            return rimsWithTires;
+            return rimsWithTires.OrderBy(x => x.Brand);
+        }
+
+        public IQueryable<RimWithTire> GetFirstFive(RimsWithTiresSearchModel searchModel)
+        {
+            return this.Filter(searchModel).Take(5);
         }
     }
 }

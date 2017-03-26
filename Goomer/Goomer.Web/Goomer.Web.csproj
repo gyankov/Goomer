@@ -466,6 +466,8 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\rims-scroll.js" />
+    <Content Include="Scripts\rims-with-tires-scroll.js" />
+    <Content Include="Scripts\tires-scroll.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -518,6 +520,8 @@
     <Content Include="Scripts\Kendo\kendo.aspnetmvc.min.js.map" />
     <Content Include="Views\Templates\DisplayTemplates\CustomDecimal.cshtml" />
     <Content Include="Views\Rims\PartialRims.cshtml" />
+    <Content Include="Views\Tires\PartialTires.cshtml" />
+    <Content Include="Views\RimsWithTires\PartialRimsWithTires.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

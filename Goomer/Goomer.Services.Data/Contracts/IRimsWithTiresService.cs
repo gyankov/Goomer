@@ -7,6 +7,10 @@ namespace Goomer.Services.Data.Contracts
 {
     public interface IRimsWithTiresService
     {
+        IQueryable<RimWithTire> GetFirstFive(RimsWithTiresSearchModel searchModel);
+
+        IQueryable<RimWithTire> GetNextFive(RimsWithTiresSearchModel searchModel, int page);
+
         IQueryable<RimWithTire> LatestPosts();
 
         void AddNewTireAd(string userId, RimWithTire rimWithTire, IEnumerable<string> picturesPaths);

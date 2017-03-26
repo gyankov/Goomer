@@ -1,0 +1,29 @@
+﻿@using Goomer.Web.Areas.Administration.Models
+@model EditUserViewModel
+
+<section>
+    <div class="container">
+        <row>
+            <div class="col-sm-12 col-lg-offset-1">
+                <h2 style="font-family: 'Oswald', sans-serif;">Users</h2>
+            </div>
+        </row>
+        <div class="row">
+            @using (Html.BeginForm("Update", "Users", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+            {
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(x => x.Id, new { @class = "form-control", @readonly="readonly" })
+                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control", placeholder = "Email" })
+                    @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control", placeholder = "PhoneNumber" })
+                </div>
+                <div class="col-sm-3">
+                    @Html.CheckBoxFor(x => x.IsAdmin, new { @class = "form-control", placeholder = "Is admin" })
+                    @Html.CheckBoxFor(x => x.IsDeleted, new { @class = "form-control", placeholder = "Is Deleted" })
+                </div>
+                <input type="submit" value="Edit"/>
+            }
+        </div>
+    </div>
+</section>
