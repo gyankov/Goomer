@@ -14,9 +14,7 @@ namespace Goomer.Services.Data.Contracts
         IQueryable<RimWithTire> LatestPosts();
 
         void AddNewTireAd(string userId, RimWithTire rimWithTire, IEnumerable<string> picturesPaths);
-
-        IQueryable<RimWithTire> Filter(RimsWithTiresSearchModel searchModel);
-
+        
         RimWithTire GetById(object id);
     }
 }

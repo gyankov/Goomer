@@ -13,6 +13,16 @@ namespace Goomer.Services.Data
 
         public UsersService(IDbRepository<User> usersRepo, IUnitOfWork uow)
         {
+            if (usersRepo == null)
+            {
+                throw new ArgumentNullException(nameof(usersRepo));
+            }
+
+            if (uow == null)
+            {
+                throw new ArgumentNullException(nameof(uow));
+            }
+
             this.usersRepo = usersRepo;
             this.uow = uow;
         }
@@ -42,12 +52,7 @@ namespace Goomer.Services.Data
         public void Update(object userId, bool IsDeleted, string Email, string PhoneNumber, bool IsAdmin)
         {
             var user = this.usersRepo.GetById(userId);
-
-            if (user == null)
-            {
-                throw new ArgumentNullException("User doesn't exist.");
-            }
-
+            
             user.IsDeleted = IsDeleted;
             user.Email = Email;
             user.PhoneNumber = PhoneNumber;

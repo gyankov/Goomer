@@ -16,6 +16,21 @@ namespace Goomer.Services.Data
 
         public RimsWithTyresService(IDbRepository<RimWithTire> rimWithTireRepo, IUsersService usersService, IUnitOfWork uow)
         {
+            if (rimWithTireRepo == null)
+            {
+                throw new ArgumentNullException(nameof(rimWithTireRepo));
+            }
+
+            if (usersService == null)
+            {
+                throw new ArgumentNullException(nameof(usersService));
+            }
+
+            if (uow == null)
+            {
+                throw new ArgumentNullException(nameof(uow));
+            }
+
             this.rimWithTireRepo = rimWithTireRepo;
             this.usersService = usersService;
             this.uow = uow;
@@ -51,106 +66,185 @@ namespace Goomer.Services.Data
             return this.Filter(searchModel).Skip(page * 5).Take(5);
         }
 
-        public IQueryable<RimWithTire> Filter(RimsWithTiresSearchModel searchModel)
-        {
-            var rimsWithTires = this.rimWithTireRepo.All();
-
-            if (!string.IsNullOrWhiteSpace(searchModel.Brand))
-            {
-                rimsWithTires = rimsWithTires.Where(x => x.Brand.ToLower().Contains(searchModel.Brand.ToLower()));
-            }
-
-            if (!string.IsNullOrWhiteSpace(searchModel.Model))
-            {
-                rimsWithTires = rimsWithTires.Where(x => x.Model.ToLower().Contains(searchModel.Model.ToLower()));
-            }
-
-            if (!string.IsNullOrWhiteSpace(searchModel.Siting))
-            {
-                rimsWithTires = rimsWithTires.Where(x => x.Siting.ToLower().Contains(searchModel.Siting.ToLower()));
-            }
-
-            if (searchModel.DotFrom != null)
-            {
-                rimsWithTires = rimsWithTires.Where(x => x.Dot >= searchModel.DotFrom);
-            }
-
-            if (searchModel.QuantityFrom != null)
-            {
-                rimsWithTires = rimsWithTires.Where(x => x.Quantity >= searchModel.QuantityFrom);
-            }
-
-            if (searchModel.Width != null)
-            {
-                rimsWithTires = rimsWithTires.Where(x => x.Width == searchModel.Width);
-            }
-
-            if (searchModel.Height != null)
-            {
-                rimsWithTires = rimsWithTires.Where(x => x.Height == searchModel.Height);
-            }
-
-            if (searchModel.Size != null)
-            {
-                rimsWithTires = rimsWithTires.Where(x => x.Size == searchModel.Size);
-            }
-
-            if (searchModel.PriceFrom != null)
-            {
-                rimsWithTires = rimsWithTires.Where(x => x.Price >= searchModel.PriceFrom);
-            }
-
-            if (searchModel.PriceTo != null)
-            {
-                rimsWithTires = rimsWithTires.Where(x => x.Price <= searchModel.PriceTo);
-            }
-
-            if (searchModel.SpeedIndexFrom != null)
-            {
-                rimsWithTires = rimsWithTires.Where(x => x.SpeedIndex >= searchModel.SpeedIndexFrom);
-            }
-
-            if (searchModel.WeightIndex != null)
-            {
-                rimsWithTires = rimsWithTires.Where(x => x.WeightIndex == searchModel.WeightIndex);
-            }
-
-            if (searchModel.GrappleFrom != null)
-            {
-                rimsWithTires = rimsWithTires.Where(x => x.GrappleMm >= searchModel.GrappleFrom);
-            }
-
-            if (searchModel.Season != null)
-            {
-                rimsWithTires = rimsWithTires.Where(x => x.Season == searchModel.Season);
-            }
-
-            if (searchModel.OnlyBrandNew)
-            {
-                rimsWithTires = rimsWithTires.Where(x => x.IsBrandNew);
-            }
-
-            if (searchModel.CentralHoleSize != null)
-            {
-                rimsWithTires = rimsWithTires.Where(x => x.CentralHoleSize == searchModel.CentralHoleSize);
-            }
-
-            if (searchModel.NumberOfBolts != null)
-            {
-                rimsWithTires = rimsWithTires.Where(x => x.NumberOfBolts == searchModel.NumberOfBolts);
-            }
-
-            if (searchModel.SpaceBetweenBolts != null)
-            {
-                rimsWithTires = rimsWithTires.Where(x => x.SpaceBetweenBolts == searchModel.SpaceBetweenBolts);
-            }
-
-            return rimsWithTires.OrderBy(x => x.Brand);
-        }
-
         public IQueryable<RimWithTire> GetFirstFive(RimsWithTiresSearchModel searchModel)
         {
             return this.Filter(searchModel).Take(5);
         }
+
+        private IQueryable<RimWithTire> Filter(RimsWithTiresSearchModel searchModel)
+        {
+            var rimsWithTires = this.rimWithTireRepo.All();
+            
+            return this.DotFromFilter(searchModel, rimsWithTires).OrderBy(x => x.Brand);
+        }
+        private IQueryable<RimWithTire> DotFromFilter(RimsWithTiresSearchModel searchModel, IQueryable<RimWithTire> rims)
+        {
+            if (searchModel.DotFrom != null)
+            {
+                rims = rims.Where(x => x.Dot >= searchModel.DotFrom);
+            }
+
+            return this.SpeedIndexFilter(searchModel, rims);
+        }
+
+
+        private IQueryable<RimWithTire> SpeedIndexFilter(RimsWithTiresSearchModel searchModel, IQueryable<RimWithTire> rims)
+        {
+            if (searchModel.SpeedIndexFrom != null)
+            {
+                rims = rims.Where(x => x.SpeedIndex >= searchModel.SpeedIndexFrom);
+            }
+
+            return this.WeightIndexFilter(searchModel, rims);
+        }
+
+        private IQueryable<RimWithTire> WeightIndexFilter(RimsWithTiresSearchModel searchModel, IQueryable<RimWithTire> rims)
+        {
+            if (searchModel.WeightIndex != null)
+            {
+                rims = rims.Where(x => x.WeightIndex == searchModel.WeightIndex);
+            }
+
+            return this.GrappleMmFilter(searchModel, rims);
+        }
+
+        private IQueryable<RimWithTire> GrappleMmFilter(RimsWithTiresSearchModel searchModel, IQueryable<RimWithTire> rims)
+        {
+            if (searchModel.GrappleFrom != null)
+            {
+                rims = rims.Where(x => x.GrappleMm >= searchModel.GrappleFrom);
+            }
+
+            return this.SeasonFilter(searchModel, rims);
+        }
+
+        private IQueryable<RimWithTire> SeasonFilter(RimsWithTiresSearchModel searchModel, IQueryable<RimWithTire> rims)
+        {
+            if (searchModel.Season != null)
+            {
+                rims = rims.Where(x => x.Season == searchModel.Season);
+            }
+            return this.BrandFilter(searchModel, rims);
+        }
+
+        private IQueryable<RimWithTire> BrandFilter(RimsWithTiresSearchModel searchModel, IQueryable<RimWithTire> rims)
+        {
+            if (!string.IsNullOrWhiteSpace(searchModel.Brand))
+            {
+                rims = rims.Where(x => x.Brand.ToLower().Contains(searchModel.Brand.ToLower()));
+            }
+
+            return this.ModelFilter(searchModel, rims);
+        }
+
+        private IQueryable<RimWithTire> ModelFilter(RimsWithTiresSearchModel searchModel, IQueryable<RimWithTire> rims)
+        {
+            if (!string.IsNullOrWhiteSpace(searchModel.Model))
+            {
+                rims = rims.Where(x => x.Model.ToLower().Contains(searchModel.Model.ToLower()));
+            }
+
+            return this.SitingFilter(searchModel, rims);
+        }
+
+        private IQueryable<RimWithTire> SitingFilter(RimsWithTiresSearchModel searchModel, IQueryable<RimWithTire> rims)
+        {
+            if (!string.IsNullOrWhiteSpace(searchModel.Siting))
+            {
+                rims = rims.Where(x => x.Siting.ToLower().Contains(searchModel.Siting.ToLower()));
+            }
+
+            return this.QuantityFromFilter(searchModel, rims);
+        }
+
+        private IQueryable<RimWithTire> QuantityFromFilter(RimsWithTiresSearchModel searchModel, IQueryable<RimWithTire> rims)
+        {
+            if (searchModel.QuantityFrom != null)
+            {
+                rims = rims.Where(x => x.Quantity >= searchModel.QuantityFrom);
+            }
+
+            return this.WidthFilter(searchModel, rims);
+        }
+
+        private IQueryable<RimWithTire> WidthFilter(RimsWithTiresSearchModel searchModel, IQueryable<RimWithTire> rims)
+        {
+            if (searchModel.Width != null)
+            {
+                rims = rims.Where(x => x.Width == searchModel.Width);
+            }
+
+            return this.CentralHoleSizeFilter(searchModel, rims);
+        }
+
+        private IQueryable<RimWithTire> CentralHoleSizeFilter(RimsWithTiresSearchModel searchModel, IQueryable<RimWithTire> rims)
+        {
+            if (searchModel.CentralHoleSize != null)
+            {
+                rims = rims.Where(x => x.CentralHoleSize == searchModel.CentralHoleSize);
+            }
+            return this.NumberOfBoltsFilter(searchModel, rims);
+        }
+
+        private IQueryable<RimWithTire> NumberOfBoltsFilter(RimsWithTiresSearchModel searchModel, IQueryable<RimWithTire> rims)
+        {
+            if (searchModel.NumberOfBolts != null)
+            {
+                rims = rims.Where(x => x.NumberOfBolts == searchModel.NumberOfBolts);
+            }
+
+            return this.SpaceBetweenBoltsFilter(searchModel, rims);
+        }
+
+        private IQueryable<RimWithTire> SpaceBetweenBoltsFilter(RimsWithTiresSearchModel searchModel, IQueryable<RimWithTire> rims)
+        {
+            if (searchModel.SpaceBetweenBolts != null)
+            {
+                rims = rims.Where(x => x.SpaceBetweenBolts == searchModel.SpaceBetweenBolts);
+            }
+
+            return this.SizeFilter(searchModel, rims);
+        }
+
+        private IQueryable<RimWithTire> SizeFilter(RimsWithTiresSearchModel searchModel, IQueryable<RimWithTire> rims)
+        {
+            if (searchModel.Size != null)
+            {
+                rims = rims.Where(x => x.Size == searchModel.Size);
+            }
+
+            return this.PriceFromFilter(searchModel, rims);
+        }
+
+        private IQueryable<RimWithTire> PriceFromFilter(RimsWithTiresSearchModel searchModel, IQueryable<RimWithTire> rims)
+        {
+            if (searchModel.PriceFrom != null)
+            {
+                rims = rims.Where(x => x.Price >= searchModel.PriceFrom);
+            }
+
+            return this.PriceToFilter(searchModel, rims);
+        }
+
+        private IQueryable<RimWithTire> PriceToFilter(RimsWithTiresSearchModel searchModel, IQueryable<RimWithTire> rims)
+        {
+            if (searchModel.PriceTo != null)
+            {
+                rims = rims.Where(x => x.Price <= searchModel.PriceTo);
+            }
+
+            return this.OnlyBrandNewFilter(searchModel, rims);
+        }
+
+        private IQueryable<RimWithTire> OnlyBrandNewFilter(RimsWithTiresSearchModel searchModel, IQueryable<RimWithTire> rims)
+        {
+            if (searchModel.OnlyBrandNew)
+            {
+                rims = rims.Where(x => x.IsBrandNew);
+            }
+
+            return rims;
+        }
+
     }
 }

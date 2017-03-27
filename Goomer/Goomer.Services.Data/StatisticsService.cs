@@ -17,6 +17,21 @@ namespace Goomer.Services.Data
 
         public StatisticsService(IDbRepository<Tire> tiresRepo, IDbRepository<Rim> rimsRepo, IDbRepository<RimWithTire> rimsWithTiresRepo)
         {
+            if (tiresRepo == null)
+            {
+                throw new ArgumentNullException(nameof(tiresRepo));
+            }
+
+            if (rimsRepo == null)
+            {
+                throw new ArgumentNullException(nameof(rimsRepo));
+            }
+
+            if (rimsWithTiresRepo == null)
+            {
+                throw new ArgumentNullException(nameof(rimsWithTiresRepo));
+            }
+
             this.tiresRepo = tiresRepo;
             this.rimsRepo = rimsRepo;
             this.rimsWithTiresRepo = rimsWithTiresRepo;

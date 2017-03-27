@@ -15,6 +15,6 @@ environment:
     secure: gEV+TL2eW2MkO05JWeO+GlfPhYkkFUiIq+9OxoPCqIOCGtl8pQCuUqE2ph5J/iEj
 
 after_test:
-  - Goomer\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -filter:"+[*]*" -target:"Goomer\packages\NUnit.ConsoleRunner.3.6.0\tools\nunit3-console.exe" -targetargs:"/domain:single Goomer\Goomer.Services.Web.Tests\bin\Debug\Goomer.Services.Web.Tests.dll Goomer\Goomer.Data.Tests\bin\Debug\Goomer.Data.Tests.dll Goomer\Goomer.Data.Models.Tests\bin\Debug\Goomer.Data.Models.Tests.dll" -output:cover.xml
+  - Goomer\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -filter:"+[*]*" -target:"Goomer\packages\NUnit.ConsoleRunner.3.6.0\tools\nunit3-console.exe" -targetargs:"/domain:single Goomer\Goomer.Services.Web.Tests\bin\Debug\Goomer.Services.Web.Tests.dll Goomer\Goomer.Data.Tests\bin\Debug\Goomer.Data.Tests.dll Goomer\Goomer.Data.Models.Tests\bin\Debug\Goomer.Data.Models.Tests.dll Goomer\Goomer.Services.Data.Tests\bin\Debug\Goomer.Services.Data.Tests.dll" -output:cover.xml
 
   - Goomer\packages\coveralls.io.1.3.4\tools\coveralls.net.exe --opencover cover.xml
