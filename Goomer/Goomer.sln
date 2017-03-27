@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goomer.Services.Coverall", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goomer.Data.Tests", "Goomer.Data.Tests\Goomer.Data.Tests.csproj", "{3E2D8552-4FB8-4960-874E-AE5319A72ACD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goomer.Data.Models.Tests", "Goomer.Data.Models.Tests\Goomer.Data.Models.Tests.csproj", "{96D05789-AB4C-4FE5-AA2C-B2A26FB944BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{3E2D8552-4FB8-4960-874E-AE5319A72ACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E2D8552-4FB8-4960-874E-AE5319A72ACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E2D8552-4FB8-4960-874E-AE5319A72ACD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96D05789-AB4C-4FE5-AA2C-B2A26FB944BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96D05789-AB4C-4FE5-AA2C-B2A26FB944BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96D05789-AB4C-4FE5-AA2C-B2A26FB944BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96D05789-AB4C-4FE5-AA2C-B2A26FB944BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -109,5 +115,6 @@ Global
 		{F476A269-D2DE-4247-B0D5-8509039915F4} = {AC975385-DD5E-477C-BE7D-6F8D7AF2C89E}
 		{29585E90-EB8F-482F-BAA2-881422D49384} = {20C2A124-5694-423C-B1E4-781AA1B694CD}
 		{3E2D8552-4FB8-4960-874E-AE5319A72ACD} = {AC975385-DD5E-477C-BE7D-6F8D7AF2C89E}
+		{96D05789-AB4C-4FE5-AA2C-B2A26FB944BE} = {AC975385-DD5E-477C-BE7D-6F8D7AF2C89E}
 	EndGlobalSection
 EndGlobal

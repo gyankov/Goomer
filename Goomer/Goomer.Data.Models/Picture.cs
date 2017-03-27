@@ -8,13 +8,11 @@ using System.Threading.Tasks;
 
 namespace Goomer.Data.Models
 {
-    public abstract class Picture : IAuditInfo, IDeletableEntity
+    public class Picture : IAuditInfo, IDeletableEntity
     {
         public DateTime? CreatedOn { get; set; }
 
         public DateTime? DeletedOn { get; set; }
-
-        public DateTime? DeletedOnk { get; set; }
 
         [Key]
         public int Id { get; set; }
@@ -23,6 +21,7 @@ namespace Goomer.Data.Models
 
         public DateTime? ModifiedOn { get; set; }
 
+        [Required]
         public string Url { get; set; }
     }
 }
