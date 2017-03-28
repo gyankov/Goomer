@@ -15,28 +15,22 @@ namespace Goomer.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IUsersService usersService;
         private readonly ITiresService tiresService;
         private readonly IRimsService rimsService;
         private readonly IRimsWithTiresService rimsWithTyresService;
         private readonly ICacheService cacheService;
-        private readonly IIdentifierProvider identifierProvider;
         private readonly IStatisticsService statisticsService;
         public HomeController(
-            IUsersService usersService,
             ITiresService tiresService,
             IRimsService rimsService,
             IRimsWithTiresService rimsWithTyresService,
             ICacheService cacheService,
-            IIdentifierProvider identifierProvider,
             IStatisticsService statisticsService)
         {
-            this.usersService = usersService;
             this.tiresService = tiresService;
             this.rimsService = rimsService;
             this.rimsWithTyresService = rimsWithTyresService;
             this.cacheService = cacheService;
-            this.identifierProvider = identifierProvider;
             this.statisticsService = statisticsService;
         }
         public ActionResult Index()

@@ -19,7 +19,6 @@ namespace Goomer.Web.Controllers
     [Authorize]
     public class TiresController : Controller
     {
-        private readonly IUsersService usersService;
         private readonly ITiresService tiresService;
         private readonly IFileSaver fileSaver;
         private readonly IIdentifierProvider identifierProvider;
@@ -27,7 +26,6 @@ namespace Goomer.Web.Controllers
         private readonly IStatisticsService statisticsService;
 
         public TiresController(
-            IUsersService usersService,
             ITiresService tiresService,
             IFileSaver fileSaver,
             IIdentifierProvider identifierProvider,
@@ -35,7 +33,6 @@ namespace Goomer.Web.Controllers
             IStatisticsService statisticsService
             )
         {
-            this.usersService = usersService;
             this.tiresService = tiresService;
             this.fileSaver = fileSaver;
             this.identifierProvider = identifierProvider;

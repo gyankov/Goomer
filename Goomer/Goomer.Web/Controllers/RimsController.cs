@@ -19,21 +19,18 @@ namespace Goomer.Web.Controllers
     [Authorize]
     public class RimsController : Controller
     {
-
-        private readonly IUsersService usersService;
+        
         private readonly IRimsService rimsService;
         private readonly IFileSaver fileSaver;
         private readonly IIdentifierProvider identifierProvider;
         private readonly IStatisticsHubCorresponder statisticsHubCorresponder;
         private readonly IStatisticsService statisticsService;
         public RimsController(
-            IUsersService usersService,
             IRimsService rimsService, 
             IFileSaver fileSaver, IIdentifierProvider identifierProvider, 
             IStatisticsHubCorresponder statisticsHubCorresponder,
             IStatisticsService statisticsService)
         {
-            this.usersService = usersService;
             this.rimsService = rimsService;
             this.fileSaver = fileSaver;
             this.identifierProvider = identifierProvider;
@@ -118,7 +115,7 @@ namespace Goomer.Web.Controllers
         public ActionResult Index()
         {
             var rims = this.rimsService.LatestPosts().To<ListingRimViewModel>().ToList();
-            return View("ListingTire", rims);
+            return View("ListingRim", rims);
         }
     }
 }
