@@ -24,5 +24,6 @@
 
 |                                               |                                              |
 | -----------------------------------           |:--------------------------------------------:|   
-| ![alt tag](./Screenshots/1.png)       | ![alt tag](.3.png)    |
-| ![alt tag](./Screenshots/2.png)  | ![alt tag](.4.png)|
+| ![alt tag](./Screenshots/1.png)         | ![alt tag](./Screenshots/3.png)                           |
+| ![alt tag](./Screenshots/2.png)         | ![alt tag](./Screenshots/4.png)                           |
+     
