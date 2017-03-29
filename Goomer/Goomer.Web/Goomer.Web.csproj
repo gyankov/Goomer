@@ -448,6 +448,7 @@
     <Content Include="Content\Kendo\kendo.uniform.min.css.map" />
     <Content Include="Content\Kendo\kendo.uniform.mobile.min.css.map" />
     <Content Include="Areas\Administration\Views\Templates\EditTemplates\EditUser.cshtml" />
+    <None Include="Properties\PublishProfiles\Test.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\infinite-scroll.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -469,7 +470,9 @@
     <Content Include="Scripts\rims-with-tires-scroll.js" />
     <Content Include="Scripts\tires-scroll.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
