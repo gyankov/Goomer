@@ -17,7 +17,7 @@
 - Ninject (DI Container)
 - Automapper
 - KendoUI
--SignalR
+- SignalR
 
 # Screenshots
 
